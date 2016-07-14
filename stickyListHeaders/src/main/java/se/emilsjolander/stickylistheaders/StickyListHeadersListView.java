@@ -226,7 +226,7 @@ public class StickyListHeadersListView extends FrameLayout {
         measureHeader(mHeader);
     }
 
-    private void ensureHeaderHasCorrectLayoutParams(View header) {
+    private static void ensureHeaderHasCorrectLayoutParams(View header) {
         ViewGroup.LayoutParams lp = header.getLayoutParams();
         if (lp == null) {
             lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
@@ -640,7 +640,7 @@ public class StickyListHeadersListView extends FrameLayout {
         return mList;
     }
 
-    private boolean requireSdkVersion(int versionCode) {
+    private static boolean requireSdkVersion(int versionCode) {
         if (Build.VERSION.SDK_INT < versionCode) {
             Log.e("StickyListHeaders", "Api lvl must be at least "+versionCode+" to call this method");
             return false;

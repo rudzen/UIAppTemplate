@@ -136,19 +136,19 @@ public class CircularProgressButton extends Button {
         mIdleStateDrawable.addState(StateSet.WILD_CARD, background.getGradientDrawable());
     }
 
-    private int getNormalColor(ColorStateList colorStateList) {
+    private static int getNormalColor(ColorStateList colorStateList) {
         return colorStateList.getColorForState(new int[]{android.R.attr.state_enabled}, 0);
     }
 
-    private int getPressedColor(ColorStateList colorStateList) {
+    private static int getPressedColor(ColorStateList colorStateList) {
         return colorStateList.getColorForState(new int[]{android.R.attr.state_pressed}, 0);
     }
 
-    private int getFocusedColor(ColorStateList colorStateList) {
+    private static int getFocusedColor(ColorStateList colorStateList) {
         return colorStateList.getColorForState(new int[]{android.R.attr.state_focused}, 0);
     }
 
-    private int getDisabledColor(ColorStateList colorStateList) {
+    private static int getDisabledColor(ColorStateList colorStateList) {
         return colorStateList.getColorForState(new int[]{-android.R.attr.state_enabled}, 0);
     }
 

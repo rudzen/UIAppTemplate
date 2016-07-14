@@ -328,7 +328,7 @@ public class SvgToPath {
         }
     }
 
-    private String showAttributes(XmlPullParser a) {
+    private static String showAttributes(XmlPullParser a) {
         StringBuilder result = new StringBuilder();
         for(int i=0; i < a.getAttributeCount(); i++) {
             result.append(' ');

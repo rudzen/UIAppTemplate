@@ -216,7 +216,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
         return isGroupExpanded(groupPos);
     }
 
-    private int getAnimationDuration() {
+    private static int getAnimationDuration() {
         return ANIMATION_DURATION;
     }
 
@@ -325,9 +325,8 @@ public class AnimatedExpandableListView extends ExpandableListView {
             return getRealChildTypeCount() + 1;
         }
         
-        protected ViewGroup.LayoutParams generateDefaultLayoutParams() {
-            return new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                                                ViewGroup.LayoutParams.WRAP_CONTENT, 0);
+        protected static ViewGroup.LayoutParams generateDefaultLayoutParams() {
+            return new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 0);
         }
 
         /**
@@ -427,7 +426,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
 
                 if (info.expanding && state != STATE_EXPANDING) {
                     ExpandAnimation ani = new ExpandAnimation(dummyView, 0, totalHeight, info);
-                    ani.setDuration(this.parent.getAnimationDuration());
+                    ani.setDuration(AnimatedExpandableListView.getAnimationDuration());
                     ani.setAnimationListener(new AnimationListener() {
 
                         @Override
@@ -452,7 +451,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
                     }
 
                     ExpandAnimation ani = new ExpandAnimation(dummyView, info.dummyHeight, 0, info);
-                    ani.setDuration(this.parent.getAnimationDuration());
+                    ani.setDuration(AnimatedExpandableListView.getAnimationDuration());
                     ani.setAnimationListener(new AnimationListener() {
 
                         @Override

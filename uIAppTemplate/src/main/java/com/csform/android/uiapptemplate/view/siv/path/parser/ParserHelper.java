@@ -256,7 +256,7 @@ class ParserHelper {
         return buildFloat(mant, exp);
     }
 
-    private void reportUnexpectedCharacterError(char c) {
+    private static void reportUnexpectedCharacterError(char c) {
         throw new RuntimeException("Unexpected char '" + c + "'.");
     }
 

@@ -52,7 +52,7 @@ class IdHandler {
     }
 
 
-    private void appendElementString(StringBuilder sb, String localName, XmlPullParser atts) {
+    private static void appendElementString(StringBuilder sb, String localName, XmlPullParser atts) {
         sb.append('<');
         sb.append(localName);
         for (int i = 0; i < atts.getAttributeCount(); i++) {

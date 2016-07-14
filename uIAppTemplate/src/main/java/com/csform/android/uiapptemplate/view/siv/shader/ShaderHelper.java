@@ -50,9 +50,8 @@ public abstract class ShaderHelper {
 			float width, float height, float scale, float translateX,
 			float translateY);
 
-	protected final int dpToPx(DisplayMetrics displayMetrics, int dp) {
-		return Math.round(dp
-				* (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+	protected static int dpToPx(DisplayMetrics displayMetrics, int dp) {
+		return Math.round(dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
 	}
 
 	public boolean isSquare() {

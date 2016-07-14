@@ -217,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
-    private Fragment getFragmentByDrawerTag(int drawerTag) {
+    private static Fragment getFragmentByDrawerTag(int drawerTag) {
         Fragment fragment;
         if (drawerTag == DrawerItem.DRAWER_ITEM_TAG_SPLASH_SCREENS) {
             fragment = SplashScreensFragment.newInstance();

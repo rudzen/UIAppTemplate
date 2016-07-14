@@ -139,7 +139,7 @@ public class ParallaxKenBurnsActivity extends Activity {
         view1.setScaleY(scaleY);
     }
 
-    private void setOnScreenRect(RectF rect, View view) {
+    private static void setOnScreenRect(RectF rect, View view) {
         rect.set(view.getLeft(), view.getTop(), view.getRight(), view.getBottom());
     }
 
