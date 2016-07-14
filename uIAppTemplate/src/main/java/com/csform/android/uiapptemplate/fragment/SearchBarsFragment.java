@@ -19,37 +19,36 @@ import java.util.List;
 
 public class SearchBarsFragment extends Fragment implements OnItemClickListener {
 
-	private ListView mListView;
-	private List<String> mSearchBars;
+    private ListView mListView;
+    private List<String> mSearchBars;
 
-	public static SearchBarsFragment newInstance() {
-		return new SearchBarsFragment();
-	}
+    public static SearchBarsFragment newInstance() {
+        return new SearchBarsFragment();
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		mSearchBars = new ArrayList<>();
-		mSearchBars.add(SearchBarsActivity.SEARCH_BARS_DARK);
-		mSearchBars.add(SearchBarsActivity.SEARCH_BARS_LIGHT);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mSearchBars = new ArrayList<>();
+        mSearchBars.add(SearchBarsActivity.SEARCH_BARS_DARK);
+        mSearchBars.add(SearchBarsActivity.SEARCH_BARS_LIGHT);
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_search_bars, container, false);
-		
-		mListView = (ListView) rootView.findViewById(R.id.list_view);
-		mListView.setAdapter(new SubcategoryAdapter(getActivity(), mSearchBars));
-		mListView.setOnItemClickListener(this);
-		
-		return rootView;
-	}
-	
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Intent intent = new Intent(getActivity(), SearchBarsActivity.class);
-		intent.putExtra(SearchBarsActivity.SEARCH_BARS_OPTION, mSearchBars.get(position));
-		startActivity(intent);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_search_bars, container, false);
+
+        mListView = (ListView) rootView.findViewById(R.id.list_view);
+        mListView.setAdapter(new SubcategoryAdapter(getActivity(), mSearchBars));
+        mListView.setOnItemClickListener(this);
+
+        return rootView;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getActivity(), SearchBarsActivity.class);
+        intent.putExtra(SearchBarsActivity.SEARCH_BARS_OPTION, mSearchBars.get(position));
+        startActivity(intent);
+    }
 }

@@ -1,56 +1,56 @@
 package com.csform.android.uiapptemplate.model;
 
 public class DummyModel {
-	
-	private long mId;
-	private String mImageURL;
-	private String mText;
-	private int mIconRes;
 
-	public DummyModel() {
-	}
+    private long mId;
+    private String mImageURL;
+    private String mText;
+    private int mIconRes;
 
-	public DummyModel(long id, String imageURL, String text, int iconRes) {
-		mId = id;
-		mImageURL = imageURL;
-		mText = text;
-		mIconRes = iconRes;
-	}
+    public DummyModel() {
+    }
 
-	public long getId() {
-		return mId;
-	}
+    public DummyModel(long id, String imageURL, String text, int iconRes) {
+        mId = id;
+        mImageURL = imageURL;
+        mText = text;
+        mIconRes = iconRes;
+    }
 
-	public void setId(long id) {
-		mId = id;
-	}
+    public long getId() {
+        return mId;
+    }
 
-	public String getImageURL() {
-		return mImageURL;
-	}
+    public void setId(long id) {
+        mId = id;
+    }
 
-	public void setImageURL(String imageURL) {
-		mImageURL = imageURL;
-	}
+    public String getImageURL() {
+        return mImageURL;
+    }
 
-	public String getText() {
-		return mText;
-	}
+    public void setImageURL(String imageURL) {
+        mImageURL = imageURL;
+    }
 
-	public void setText(String text) {
-		mText = text;
-	}
+    public String getText() {
+        return mText;
+    }
 
-	public int getIconRes() {
-		return mIconRes;
-	}
+    public void setText(String text) {
+        mText = text;
+    }
 
-	public void setIconRes(int iconRes) {
-		mIconRes = iconRes;
-	}
+    public int getIconRes() {
+        return mIconRes;
+    }
 
-	@Override
-	public String toString() {
-		return mText;
-	}
+    public void setIconRes(int iconRes) {
+        mIconRes = iconRes;
+    }
+
+    @Override
+    public String toString() {
+        return mText;
+    }
 }

@@ -10,15 +10,14 @@ import com.csform.android.uiapptemplate.R;
 
 public class ButtonsFragment extends Fragment {
 
-	public static ButtonsFragment newInstance() {
-		return new ButtonsFragment();
-	}
+    public static ButtonsFragment newInstance() {
+        return new ButtonsFragment();
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_buttons, container, false);
-		
-		return rootView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_buttons, container, false);
+
+        return rootView;
+    }
 }

@@ -11,19 +11,19 @@
         android:layout_height="match_parent"
         android:background="@drawable/card_background_white"
         android:padding="16dp"
-        app:linear_layout_ratio="0.8" >
+        app:linear_layout_ratio="0.8">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/image"
                 style="@style/ImageViewStyle"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
-                android:paddingTop="0dp" />
+                android:paddingTop="0dp"/>
         </RelativeLayout>
     </com.csform.android.uiapptemplate.view.ScaledLinearLayout>
 

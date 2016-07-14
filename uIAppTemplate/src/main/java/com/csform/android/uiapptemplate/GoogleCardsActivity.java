@@ -32,56 +32,52 @@ import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.SwipeDismis
 
 public class GoogleCardsActivity extends AppCompatActivity implements OnDismissCallback {
 
-	private static final int INITIAL_DELAY_MILLIS = 300;
+    private static final int INITIAL_DELAY_MILLIS = 300;
 
-	private GoogleCardsAdapter mGoogleCardsAdapter;
+    private GoogleCardsAdapter mGoogleCardsAdapter;
 
-	@Override
-	protected void onCreate(final Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.list_view);
+    @Override
+    protected void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.list_view);
 
-		ListView listView = (ListView) findViewById(R.id.list_view);
+        ListView listView = (ListView) findViewById(R.id.list_view);
 
-		mGoogleCardsAdapter = new GoogleCardsAdapter(this,
-				DummyContent.getDummyModelList());
-		SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(
-				new SwipeDismissAdapter(mGoogleCardsAdapter, this));
-		swingBottomInAnimationAdapter.setAbsListView(listView);
+        mGoogleCardsAdapter = new GoogleCardsAdapter(this, DummyContent.getDummyModelList());
+        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(new SwipeDismissAdapter(mGoogleCardsAdapter, this));
+        swingBottomInAnimationAdapter.setAbsListView(listView);
 
-		assert swingBottomInAnimationAdapter.getViewAnimator() != null;
-		swingBottomInAnimationAdapter.getViewAnimator().setInitialDelayMillis(
-				INITIAL_DELAY_MILLIS);
-		
-		listView.setClipToPadding(false);
-		listView.setDivider(null);
-		Resources r = getResources();
-		int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, r.getDisplayMetrics());
-		listView.setDividerHeight(px);
-		listView.setFadingEdgeLength(0);
-		listView.setFitsSystemWindows(true);
-		px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, r.getDisplayMetrics());
-		listView.setPadding(px, px, px, px);
-		listView.setScrollBarStyle(ListView.SCROLLBARS_OUTSIDE_OVERLAY);
-		listView.setAdapter(swingBottomInAnimationAdapter);
-		
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-	}
+        assert swingBottomInAnimationAdapter.getViewAnimator() != null;
+        swingBottomInAnimationAdapter.getViewAnimator().setInitialDelayMillis(INITIAL_DELAY_MILLIS);
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		if (item.getItemId() == android.R.id.home) {
-			finish();
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+        listView.setClipToPadding(false);
+        listView.setDivider(null);
+        Resources r = getResources();
+        int px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8, r.getDisplayMetrics());
+        listView.setDividerHeight(px);
+        listView.setFadingEdgeLength(0);
+        listView.setFitsSystemWindows(true);
+        px = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, r.getDisplayMetrics());
+        listView.setPadding(px, px, px, px);
+        listView.setScrollBarStyle(ListView.SCROLLBARS_OUTSIDE_OVERLAY);
+        listView.setAdapter(swingBottomInAnimationAdapter);
 
-	@Override
-	public void onDismiss(@NonNull final ViewGroup listView,
-			@NonNull final int[] reverseSortedPositions) {
-		for (int position : reverseSortedPositions) {
-			mGoogleCardsAdapter.remove(mGoogleCardsAdapter.getItem(position));
-		}
-	}
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onDismiss(@NonNull final ViewGroup listView, @NonNull final int[] reverseSortedPositions) {
+        for (int position : reverseSortedPositions) {
+            mGoogleCardsAdapter.remove(mGoogleCardsAdapter.getItem(position));
+        }
+    }
 }

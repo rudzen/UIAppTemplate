@@ -22,51 +22,50 @@ import java.util.List;
 
 public class ListViewsFragment extends Fragment implements OnItemClickListener {
 
-	private ListView mListView;
-	private List<String> mListViews;
+    private ListView mListView;
+    private List<String> mListViews;
 
-	public static ListViewsFragment newInstance() {
-		return new ListViewsFragment();
-	}
+    public static ListViewsFragment newInstance() {
+        return new ListViewsFragment();
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		mListViews = new ArrayList<>();
-		mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_1);
-		mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_2);
-		mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_3);
-		mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_4);
-		mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_5);
-		mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_6);
-		mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_7);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mListViews = new ArrayList<>();
+        mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_1);
+        mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_2);
+        mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_3);
+        mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_4);
+        mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_5);
+        mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_6);
+        mListViews.add(ListViewsActivity.LIST_VIEW_OPTION_7);
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_list_views, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_list_views, container, false);
 
-		mListView = (ListView) rootView.findViewById(R.id.list_view);
-		mListView.setAdapter(new SubcategoryAdapter(getActivity(), mListViews));
-		mListView.setOnItemClickListener(this);
-		
-		return rootView;
-	}
+        mListView = (ListView) rootView.findViewById(R.id.list_view);
+        mListView.setAdapter(new SubcategoryAdapter(getActivity(), mListViews));
+        mListView.setOnItemClickListener(this);
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Intent intent;
-		if (position == 6) {
-			intent = new Intent(getActivity(), GoogleCardsActivity.class);
-		} else if (position == 5) {
-			intent = new Intent(getActivity(), StickyListHeadersActivity.class);
-		} else if (position == 0) {
-			intent = new Intent(getActivity(), ExpandableListViewActivity.class);
-		} else {
-			intent = new Intent(getActivity(), ListViewsActivity.class);
-			intent.putExtra(ListViewsActivity.LIST_VIEW_OPTION, mListViews.get(position));
-		}
-		startActivity(intent);
-	}
+        return rootView;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent;
+        if (position == 6) {
+            intent = new Intent(getActivity(), GoogleCardsActivity.class);
+        } else if (position == 5) {
+            intent = new Intent(getActivity(), StickyListHeadersActivity.class);
+        } else if (position == 0) {
+            intent = new Intent(getActivity(), ExpandableListViewActivity.class);
+        } else {
+            intent = new Intent(getActivity(), ListViewsActivity.class);
+            intent.putExtra(ListViewsActivity.LIST_VIEW_OPTION, mListViews.get(position));
+        }
+        startActivity(intent);
+    }
 }

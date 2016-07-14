@@ -19,37 +19,36 @@ import java.util.List;
 
 public class LeftMenusFragment extends Fragment implements OnItemClickListener {
 
-	private ListView mListView;
-	private List<String> mLeftMenus;
-	
-	public static LeftMenusFragment newInstance() {
-		return new LeftMenusFragment();
-	}
+    private ListView mListView;
+    private List<String> mLeftMenus;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		mLeftMenus = new ArrayList<>();
-		mLeftMenus.add(LeftMenusActivity.LEFT_MENU_OPTION_1);
-		mLeftMenus.add(LeftMenusActivity.LEFT_MENU_OPTION_2);
-	}
+    public static LeftMenusFragment newInstance() {
+        return new LeftMenusFragment();
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_left_menus, container, false);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mLeftMenus = new ArrayList<>();
+        mLeftMenus.add(LeftMenusActivity.LEFT_MENU_OPTION_1);
+        mLeftMenus.add(LeftMenusActivity.LEFT_MENU_OPTION_2);
+    }
 
-		mListView = (ListView) rootView.findViewById(R.id.list_view);
-		mListView.setAdapter(new SubcategoryAdapter(getActivity(), mLeftMenus));
-		mListView.setOnItemClickListener(this);
-		
-		return rootView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_left_menus, container, false);
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Intent intent = new Intent(getActivity(), LeftMenusActivity.class);
-		intent.putExtra(LeftMenusActivity.LEFT_MENU_OPTION, mLeftMenus.get(position));
-		startActivity(intent);
-	}
+        mListView = (ListView) rootView.findViewById(R.id.list_view);
+        mListView.setAdapter(new SubcategoryAdapter(getActivity(), mLeftMenus));
+        mListView.setOnItemClickListener(this);
+
+        return rootView;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getActivity(), LeftMenusActivity.class);
+        intent.putExtra(LeftMenusActivity.LEFT_MENU_OPTION, mLeftMenus.get(position));
+        startActivity(intent);
+    }
 }

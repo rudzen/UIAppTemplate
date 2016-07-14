@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/com.csform.android.uiapptemplate"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+            xmlns:app="http://schemas.android.com/apk/res/com.csform.android.uiapptemplate"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" >
+            android:layout_height="200dp">
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/a"
@@ -20,7 +20,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/a" />
+                app:siShape="@raw/a"/>
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/b"
@@ -29,12 +29,12 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/b" />
+                app:siShape="@raw/b"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" >
+            android:layout_height="200dp">
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/c"
@@ -43,7 +43,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/c" />
+                app:siShape="@raw/c"/>
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/d"
@@ -52,12 +52,12 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/d" />
+                app:siShape="@raw/d"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" >
+            android:layout_height="200dp">
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/e"
@@ -66,7 +66,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/e" />
+                app:siShape="@raw/e"/>
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/f"
@@ -75,12 +75,12 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/f" />
+                app:siShape="@raw/f"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp" >
+            android:layout_height="200dp">
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/g"
@@ -89,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/g" />
+                app:siShape="@raw/g"/>
 
             <com.csform.android.uiapptemplate.view.siv.ShapeImageView
                 android:id="@+id/h"
@@ -98,7 +98,7 @@
                 android:layout_height="match_parent"
                 android:layout_margin="30dp"
                 android:layout_weight="1"
-                app:siShape="@raw/h" />
+                app:siShape="@raw/h"/>
         </LinearLayout>
     </LinearLayout>
 

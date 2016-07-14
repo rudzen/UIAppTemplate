@@ -20,90 +20,89 @@ import com.csform.android.uiapptemplate.util.DummyContent;
 import java.util.ArrayList;
 
 public class SearchBarsActivity extends Activity implements OnClickListener {
-	
-	public static final String SEARCH_BARS_OPTION = "com.csform.android.uiapptemplate.SearchBarsActivity";
-	public static final String SEARCH_BARS_DARK = "Dark Search Bar";
-	public static final String SEARCH_BARS_LIGHT = "Light Search Bar";
-	
-	private EditText mSearchField;
-	private TextView mXMark;
-	private View mMicrofon;
-	private ListView mListView;
-	private ArrayList<DummyModel> searchableArrayList;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		getWindow().requestFeature(Window.FEATURE_NO_TITLE); // We hide Action Bar
-		
-		String option = SEARCH_BARS_DARK;
-		Bundle extras = getIntent().getExtras();
-		if (extras != null && extras.containsKey(SEARCH_BARS_OPTION)) {
-			option = extras.getString(SEARCH_BARS_OPTION, SEARCH_BARS_DARK);
-		}
-		switch (option) {
-			case SEARCH_BARS_DARK:
-				setContentView(R.layout.activity_search_bars_dark);
-				break;
-			case SEARCH_BARS_LIGHT:
-				setContentView(R.layout.activity_search_bars_light);
-				break;
-			default:
-				setContentView(R.layout.activity_search_bars_light);
-				break;
-		}
-		
-		mSearchField = (EditText) findViewById(R.id.search_field);
-		mXMark = (TextView) findViewById(R.id.search_x);
-		mMicrofon = findViewById(R.id.search_microfon);
-		mListView = (ListView) findViewById(R.id.list_view);
-		
-		searchableArrayList = DummyContent.getDummyModelList();
-		
-		mXMark.setOnClickListener(this);
-		mMicrofon.setOnClickListener(this);
-		
-		mSearchField.addTextChangedListener(new TextWatcher() {
-			
-			@Override
-			public void onTextChanged(CharSequence s, int start, int before, int count) {
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence s, int start, int count,
-					int after) {
-			}
-			
-			@SuppressLint("DefaultLocale")
-			@Override
-			public void afterTextChanged(Editable editable) {
-				String searchText = editable.toString().trim();
-				ArrayList<String> searchedArray = new ArrayList<>();
-				for (DummyModel dm : searchableArrayList) {
-					if (dm.getText().toLowerCase().contains(searchText.toLowerCase())) {
-						searchedArray.add(dm.getText());
-					}
-				}
-				if (searchText.isEmpty()) {
-					mListView.setAdapter(null);
-					mXMark.setText(R.string.fontello_x_mark);
-				} else {
-					mListView.setAdapter(new SearchAdapter(SearchBarsActivity.this, searchedArray));
-					mXMark.setText(R.string.fontello_x_mark_masked);
-				}
-			}
-		});
-	}
 
-	@Override
-	public void onClick(View v) {
-		switch (v.getId()) {
-		case R.id.search_x:
-			mSearchField.setText(null);
-			break;
-		case R.id.search_microfon:
-			Toast.makeText(this, "Implement voice search", Toast.LENGTH_LONG).show();
-			break;
-		}
-	}
+    public static final String SEARCH_BARS_OPTION = "com.csform.android.uiapptemplate.SearchBarsActivity";
+    public static final String SEARCH_BARS_DARK = "Dark Search Bar";
+    public static final String SEARCH_BARS_LIGHT = "Light Search Bar";
+
+    private EditText mSearchField;
+    private TextView mXMark;
+    private View mMicrofon;
+    private ListView mListView;
+    private ArrayList<DummyModel> searchableArrayList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_NO_TITLE); // We hide Action Bar
+
+        String option = SEARCH_BARS_DARK;
+        Bundle extras = getIntent().getExtras();
+        if (extras != null && extras.containsKey(SEARCH_BARS_OPTION)) {
+            option = extras.getString(SEARCH_BARS_OPTION, SEARCH_BARS_DARK);
+        }
+        switch (option) {
+            case SEARCH_BARS_DARK:
+                setContentView(R.layout.activity_search_bars_dark);
+                break;
+            case SEARCH_BARS_LIGHT:
+                setContentView(R.layout.activity_search_bars_light);
+                break;
+            default:
+                setContentView(R.layout.activity_search_bars_light);
+                break;
+        }
+
+        mSearchField = (EditText) findViewById(R.id.search_field);
+        mXMark = (TextView) findViewById(R.id.search_x);
+        mMicrofon = findViewById(R.id.search_microfon);
+        mListView = (ListView) findViewById(R.id.list_view);
+
+        searchableArrayList = DummyContent.getDummyModelList();
+
+        mXMark.setOnClickListener(this);
+        mMicrofon.setOnClickListener(this);
+
+        mSearchField.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @SuppressLint("DefaultLocale")
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String searchText = editable.toString().trim();
+                ArrayList<String> searchedArray = new ArrayList<>();
+                for (DummyModel dm : searchableArrayList) {
+                    if (dm.getText().toLowerCase().contains(searchText.toLowerCase())) {
+                        searchedArray.add(dm.getText());
+                    }
+                }
+                if (searchText.isEmpty()) {
+                    mListView.setAdapter(null);
+                    mXMark.setText(R.string.fontello_x_mark);
+                } else {
+                    mListView.setAdapter(new SearchAdapter(SearchBarsActivity.this, searchedArray));
+                    mXMark.setText(R.string.fontello_x_mark_masked);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.search_x:
+                mSearchField.setText(null);
+                break;
+            case R.id.search_microfon:
+                Toast.makeText(this, "Implement voice search", Toast.LENGTH_LONG).show();
+                break;
+        }
+    }
 }

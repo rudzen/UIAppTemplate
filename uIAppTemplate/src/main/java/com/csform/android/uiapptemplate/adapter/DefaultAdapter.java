@@ -21,102 +21,101 @@ import java.util.Collections;
 
 public class DefaultAdapter extends BaseAdapter implements Swappable, UndoAdapter, OnDismissCallback {
 
-	private final Context mContext;
-	private final LayoutInflater mInflater;
-	private final ArrayList<DummyModel> mDummyModelList;
-	private final boolean mShouldShowDragAndDropIcon;
-	
-	public DefaultAdapter(Context context, ArrayList<DummyModel> dummyModelList, boolean shouldShowDragAndDropIcon) {
-		mContext = context;
-		mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		mDummyModelList = dummyModelList;
-		mShouldShowDragAndDropIcon = shouldShowDragAndDropIcon;
-	}
+    private final Context mContext;
+    private final LayoutInflater mInflater;
+    private final ArrayList<DummyModel> mDummyModelList;
+    private final boolean mShouldShowDragAndDropIcon;
 
-	@Override
-	public boolean hasStableIds() {
-		return true;
-	}
+    public DefaultAdapter(Context context, ArrayList<DummyModel> dummyModelList, boolean shouldShowDragAndDropIcon) {
+        mContext = context;
+        mInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        mDummyModelList = dummyModelList;
+        mShouldShowDragAndDropIcon = shouldShowDragAndDropIcon;
+    }
 
-	@Override
-	public int getCount() {
-		return mDummyModelList.size();
-	}
+    @Override
+    public boolean hasStableIds() {
+        return true;
+    }
 
-	@Override
-	public Object getItem(int position) {
-		return mDummyModelList.get(position);
-	}
+    @Override
+    public int getCount() {
+        return mDummyModelList.size();
+    }
 
-	@Override
-	public long getItemId(int position) {
-		return mDummyModelList.get(position).getId();
-	}
+    @Override
+    public Object getItem(int position) {
+        return mDummyModelList.get(position);
+    }
 
-	@Override
-	public void swapItems(int positionOne, int positionTwo) {
-		Collections.swap(mDummyModelList, positionOne, positionTwo);
-	}
+    @Override
+    public long getItemId(int position) {
+        return mDummyModelList.get(position).getId();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		final ViewHolder holder;
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.list_item_default, parent, false);
-			holder = new ViewHolder();
-			holder.image = (ImageView) convertView.findViewById(R.id.image);
-			holder.text = (TextView) convertView.findViewById(R.id.text);
-			holder.icon = (TextView) convertView.findViewById(R.id.icon);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
-		
-		DummyModel dm = mDummyModelList.get(position);
-		
-		ImageUtil.displayRoundImage(holder.image, dm.getImageURL(), null);
-		holder.text.setText(dm.getText());
-		if (mShouldShowDragAndDropIcon) {
-			holder.icon.setText(R.string.fontello_drag_and_drop);
-		} else {
-			holder.icon.setText(dm.getIconRes());
-		}
-		return convertView;
-	}
-	
-	
-	private static class ViewHolder {
-		public ImageView image;
-		public /*Roboto*/TextView text;
-		public /*Fontello*/TextView icon;
-	}
+    @Override
+    public void swapItems(int positionOne, int positionTwo) {
+        Collections.swap(mDummyModelList, positionOne, positionTwo);
+    }
 
-	@Override
-	@NonNull
-	public View getUndoClickView(@NonNull View view) {
-		return view.findViewById(R.id.undo_button);
-	}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final ViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.list_item_default, parent, false);
+            holder = new ViewHolder();
+            holder.image = (ImageView) convertView.findViewById(R.id.image);
+            holder.text = (TextView) convertView.findViewById(R.id.text);
+            holder.icon = (TextView) convertView.findViewById(R.id.icon);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
 
-	@Override
-	@NonNull
-	public View getUndoView(final int position, final View convertView,
-			@NonNull final ViewGroup parent) {
-		View view = convertView;
-		if (view == null) {
-			view = LayoutInflater.from(mContext).inflate(R.layout.list_item_undo_view,
-					parent, false);
-		}
-		return view;
-	}
+        DummyModel dm = mDummyModelList.get(position);
 
-	@Override
-	public void onDismiss(@NonNull final ViewGroup listView,
-			@NonNull final int[] reverseSortedPositions) {
-		for (int position : reverseSortedPositions) {
-			remove(position);
-		}
-	}
-	public void remove(int position) {
-		mDummyModelList.remove(position);
-	}
+        ImageUtil.displayRoundImage(holder.image, dm.getImageURL(), null);
+        holder.text.setText(dm.getText());
+        if (mShouldShowDragAndDropIcon) {
+            holder.icon.setText(R.string.fontello_drag_and_drop);
+        } else {
+            holder.icon.setText(dm.getIconRes());
+        }
+        return convertView;
+    }
+
+
+    private static class ViewHolder {
+        public ImageView image;
+        public /*Roboto*/ TextView text;
+        public /*Fontello*/ TextView icon;
+    }
+
+    @Override
+    @NonNull
+    public View getUndoClickView(@NonNull View view) {
+        return view.findViewById(R.id.undo_button);
+    }
+
+    @Override
+    @NonNull
+    public View getUndoView(final int position, final View convertView,
+                            @NonNull final ViewGroup parent) {
+        View view = convertView;
+        if (view == null) {
+            view = LayoutInflater.from(mContext).inflate(R.layout.list_item_undo_view, parent, false);
+        }
+        return view;
+    }
+
+    @Override
+    public void onDismiss(@NonNull final ViewGroup listView, @NonNull final int[] reverseSortedPositions) {
+        for (int position : reverseSortedPositions) {
+            remove(position);
+        }
+    }
+
+    public void remove(int position) {
+        mDummyModelList.remove(position);
+    }
 }

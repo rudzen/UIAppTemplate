@@ -15,12 +15,12 @@
 ~ limitations under the License.
 
 -->
-<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
 
     <se.emilsjolander.stickylistheaders.StickyListHeadersListView
         android:id="@+id/activity_stickylistheaders_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:dividerHeight="0dp" />
+        android:dividerHeight="0dp"/>
 
 </merge>

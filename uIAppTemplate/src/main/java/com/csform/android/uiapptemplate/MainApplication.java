@@ -7,10 +7,9 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 public class MainApplication extends Application {
 
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		ImageLoader.getInstance()
-				.init(ImageLoaderConfiguration.createDefault(this));
-	}
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
+    }
 }

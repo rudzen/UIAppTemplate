@@ -19,37 +19,36 @@ import java.util.List;
 
 public class LogInPageFragment extends Fragment implements OnItemClickListener {
 
-	private ListView mListView;
-	private List<String> mLogInPages;
+    private ListView mListView;
+    private List<String> mLogInPages;
 
-	public static LogInPageFragment newInstance() {
-		return new LogInPageFragment();
-	}
+    public static LogInPageFragment newInstance() {
+        return new LogInPageFragment();
+    }
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		mLogInPages = new ArrayList<>();
-		mLogInPages.add(LogInPageActivity.LIGHT);
-		mLogInPages.add(LogInPageActivity.DARK);
-	}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mLogInPages = new ArrayList<>();
+        mLogInPages.add(LogInPageActivity.LIGHT);
+        mLogInPages.add(LogInPageActivity.DARK);
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_login_page_and_loaders, container, false);
-		
-		mListView = (ListView) rootView.findViewById(R.id.list_view);
-		mListView.setAdapter(new SubcategoryAdapter(getActivity(), mLogInPages));
-		mListView.setOnItemClickListener(this);
-		
-		return rootView;
-	}
-	
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Intent intent = new Intent(getActivity(), LogInPageActivity.class);
-		intent.putExtra(LogInPageActivity.LOGIN_PAGE_AND_LOADERS_CATEGORY, mLogInPages.get(position));
-		startActivity(intent);
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_login_page_and_loaders, container, false);
+
+        mListView = (ListView) rootView.findViewById(R.id.list_view);
+        mListView.setAdapter(new SubcategoryAdapter(getActivity(), mLogInPages));
+        mListView.setOnItemClickListener(this);
+
+        return rootView;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getActivity(), LogInPageActivity.class);
+        intent.putExtra(LogInPageActivity.LOGIN_PAGE_AND_LOADERS_CATEGORY, mLogInPages.get(position));
+        startActivity(intent);
+    }
 }

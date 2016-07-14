@@ -52,33 +52,33 @@ public class MyStickyListHeadersAdapter extends ArrayAdapter<String> implements 
         return true;
     }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		final ViewHolder holder;
-		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.list_item_default, parent, false);
-			holder = new ViewHolder();
-			holder.image = (ImageView) convertView.findViewById(R.id.image);
-			holder.text = (TextView) convertView.findViewById(R.id.text);
-			holder.icon = (TextView) convertView.findViewById(R.id.icon);
-			convertView.setTag(holder);
-		} else {
-			holder = (ViewHolder) convertView.getTag();
-		}
-		
-		//TODO Change image URL
-		ImageUtil.displayRoundImage(holder.image, "", null);
-		holder.text.setText(getItem(position));
-		holder.icon.setText(R.string.fontello_heart_empty);
-		return convertView;
-	}
-	
-	
-	private static class ViewHolder {
-		public ImageView image;
-		public /*Roboto*/TextView text;
-		public /*Fontello*/TextView icon;
-	}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final ViewHolder holder;
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.list_item_default, parent, false);
+            holder = new ViewHolder();
+            holder.image = (ImageView) convertView.findViewById(R.id.image);
+            holder.text = (TextView) convertView.findViewById(R.id.text);
+            holder.icon = (TextView) convertView.findViewById(R.id.icon);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        //TODO Change image URL
+        ImageUtil.displayRoundImage(holder.image, "", null);
+        holder.text.setText(getItem(position));
+        holder.icon.setText(R.string.fontello_heart_empty);
+        return convertView;
+    }
+
+
+    private static class ViewHolder {
+        public ImageView image;
+        public /*Roboto*/ TextView text;
+        public /*Fontello*/ TextView icon;
+    }
 
     @Override
     public View getHeaderView(final int position, final View convertView, final ViewGroup parent) {

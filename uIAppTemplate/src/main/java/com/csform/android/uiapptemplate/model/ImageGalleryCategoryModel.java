@@ -6,99 +6,97 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 public class ImageGalleryCategoryModel implements Parcelable {
-	
-	private long mId;
-	private String mUrl;
-	private String mTitle;
-	private ArrayList<ImageGallerySubcategoryModel> mSubcategories;
-	private boolean mFavourite;
 
-	public ImageGalleryCategoryModel() {
-	}
+    private long mId;
+    private String mUrl;
+    private String mTitle;
+    private ArrayList<ImageGallerySubcategoryModel> mSubcategories;
+    private boolean mFavourite;
 
-	protected ImageGalleryCategoryModel(Parcel in) {
-		mId = in.readLong();
-		mUrl = in.readString();
-		mTitle = in.readString();
-		if (in.readByte() == 0x01) {
-			mSubcategories = new ArrayList<>();
-			in.readList(mSubcategories,
-					ImageGallerySubcategoryModel.class.getClassLoader());
-		} else {
-			mSubcategories = null;
-		}
-		mFavourite = in.readByte() != 0x00;
-	}
+    public ImageGalleryCategoryModel() {
+    }
 
-	public long getId() {
-		return mId;
-	}
+    protected ImageGalleryCategoryModel(Parcel in) {
+        mId = in.readLong();
+        mUrl = in.readString();
+        mTitle = in.readString();
+        if (in.readByte() == 0x01) {
+            mSubcategories = new ArrayList<>();
+            in.readList(mSubcategories, ImageGallerySubcategoryModel.class.getClassLoader());
+        } else {
+            mSubcategories = null;
+        }
+        mFavourite = in.readByte() != 0x00;
+    }
 
-	public void setId(long id) {
-		mId = id;
-	}
+    public long getId() {
+        return mId;
+    }
 
-	public String getUrl() {
-		return mUrl;
-	}
+    public void setId(long id) {
+        mId = id;
+    }
 
-	public void setUrl(String url) {
-		mUrl = url;
-	}
+    public String getUrl() {
+        return mUrl;
+    }
 
-	public String getTitle() {
-		return mTitle;
-	}
+    public void setUrl(String url) {
+        mUrl = url;
+    }
 
-	public void setTitle(String title) {
-		mTitle = title;
-	}
+    public String getTitle() {
+        return mTitle;
+    }
 
-	public ArrayList<ImageGallerySubcategoryModel> getSubcategories() {
-		return mSubcategories;
-	}
+    public void setTitle(String title) {
+        mTitle = title;
+    }
 
-	public void setSubcategories(
-			ArrayList<ImageGallerySubcategoryModel> subcategories) {
-		mSubcategories = subcategories;
-	}
+    public ArrayList<ImageGallerySubcategoryModel> getSubcategories() {
+        return mSubcategories;
+    }
 
-	public boolean isFavourite() {
-		return mFavourite;
-	}
+    public void setSubcategories(ArrayList<ImageGallerySubcategoryModel> subcategories) {
+        mSubcategories = subcategories;
+    }
 
-	public void setFavourite(boolean favourite) {
-		mFavourite = favourite;
-	}
+    public boolean isFavourite() {
+        return mFavourite;
+    }
 
-	@Override
-	public int describeContents() {
-		return 0;
-	}
+    public void setFavourite(boolean favourite) {
+        mFavourite = favourite;
+    }
 
-	@Override
-	public void writeToParcel(Parcel dest, int flags) {
-		dest.writeLong(mId);
-		dest.writeString(mUrl);
-		dest.writeString(mTitle);
-		if (mSubcategories == null) {
-			dest.writeByte((byte) (0x00));
-		} else {
-			dest.writeByte((byte) (0x01));
-			dest.writeList(mSubcategories);
-		}
-		dest.writeByte((byte) (mFavourite ? 0x01 : 0x00));
-	}
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-	public static final Parcelable.Creator<ImageGalleryCategoryModel> CREATOR = new Parcelable.Creator<ImageGalleryCategoryModel>() {
-		@Override
-		public ImageGalleryCategoryModel createFromParcel(Parcel in) {
-			return new ImageGalleryCategoryModel(in);
-		}
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(mId);
+        dest.writeString(mUrl);
+        dest.writeString(mTitle);
+        if (mSubcategories == null) {
+            dest.writeByte((byte) (0x00));
+        } else {
+            dest.writeByte((byte) (0x01));
+            dest.writeList(mSubcategories);
+        }
+        dest.writeByte((byte) (mFavourite ? 0x01 : 0x00));
+    }
 
-		@Override
-		public ImageGalleryCategoryModel[] newArray(int size) {
-			return new ImageGalleryCategoryModel[size];
-		}
-	};
+    public static final Parcelable.Creator<ImageGalleryCategoryModel> CREATOR = new Parcelable.Creator<ImageGalleryCategoryModel>() {
+        @Override
+        public ImageGalleryCategoryModel createFromParcel(Parcel in) {
+            return new ImageGalleryCategoryModel(in);
+        }
+
+        @Override
+        public ImageGalleryCategoryModel[] newArray(int size) {
+            return new ImageGalleryCategoryModel[size];
+        }
+    };
 }

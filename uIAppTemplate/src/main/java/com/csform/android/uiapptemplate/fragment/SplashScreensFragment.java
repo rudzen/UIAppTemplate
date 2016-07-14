@@ -19,38 +19,37 @@ import java.util.List;
 
 public class SplashScreensFragment extends Fragment implements OnItemClickListener {
 
-	private ListView mListView;
-	private List<String> mSplashScreens;
-	
-	public static SplashScreensFragment newInstance() {
-		return new SplashScreensFragment();
-	}
+    private ListView mListView;
+    private List<String> mSplashScreens;
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		mSplashScreens = new ArrayList<>();
-		mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_1);
-		mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_2);
-		mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_3);
-	}
+    public static SplashScreensFragment newInstance() {
+        return new SplashScreensFragment();
+    }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_splash_screens, container, false);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mSplashScreens = new ArrayList<>();
+        mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_1);
+        mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_2);
+        mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_3);
+    }
 
-		mListView = (ListView) rootView.findViewById(R.id.list_view);
-		mListView.setAdapter(new SubcategoryAdapter(getActivity(), mSplashScreens));
-		mListView.setOnItemClickListener(this);
-		
-		return rootView;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_splash_screens, container, false);
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Intent intent = new Intent(getActivity(), SplashScreensActivity.class);
-		intent.putExtra(SplashScreensActivity.SPLASH_SCREEN_OPTION, mSplashScreens.get(position));
-		startActivity(intent);
-	}
+        mListView = (ListView) rootView.findViewById(R.id.list_view);
+        mListView.setAdapter(new SubcategoryAdapter(getActivity(), mSplashScreens));
+        mListView.setOnItemClickListener(this);
+
+        return rootView;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getActivity(), SplashScreensActivity.class);
+        intent.putExtra(SplashScreensActivity.SPLASH_SCREEN_OPTION, mSplashScreens.get(position));
+        startActivity(intent);
+    }
 }
