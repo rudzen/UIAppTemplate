@@ -196,7 +196,7 @@ class PathParser {
                     }
                     float x1 = 2 * lastX - lastX1;
                     float y1 = 2 * lastY - lastY1;
-                    p.cubicTo( lastX, lastY, x1, y1, x, y );
+                    p.cubicTo(lastX, lastY, x1, y1, x, y);
                     lastX = x;
                     lastY = y;
                     lastX1 = x1;
@@ -216,7 +216,7 @@ class PathParser {
                         x1 += lastX;
                         y1 += lastY;
                     }
-                    p.cubicTo( lastX, lastY, x1, y1, x, y );
+                    p.cubicTo(lastX, lastY, x1, y1, x, y);
                     lastX1 = x1;
                     lastY1 = y1;
                     lastX = x;
@@ -248,8 +248,8 @@ class PathParser {
         double cosAngle = Math.cos(angle);
         double sinAngle = Math.sin(angle);
 
-        double x1 = (cosAngle * dx2 + sinAngle * dy2);
-        double y1 = (-sinAngle * dx2 + cosAngle * dy2);
+        double x1 = cosAngle * dx2 + sinAngle * dy2;
+        double y1 = -sinAngle * dx2 + cosAngle * dy2;
         rx = Math.abs(rx);
         ry = Math.abs(ry);
 
@@ -268,13 +268,12 @@ class PathParser {
         }
 
         // Step 2 : Compute (cx1, cy1)
-        double sign = (largeArcFlag == sweepFlag) ? -1 : 1;
-        double sq = ((Prx * Pry) - (Prx * Py1) - (Pry * Px1))
-                / ((Prx * Py1) + (Pry * Px1));
-        sq = (sq < 0) ? 0 : sq;
-        double coef = (sign * Math.sqrt(sq));
-        double cx1 = coef * ((rx * y1) / ry);
-        double cy1 = coef * -((ry * x1) / rx);
+        double sign = largeArcFlag == sweepFlag ? -1 : 1;
+        double sq = (Prx * Pry - Prx * Py1 - Pry * Px1) / (Prx * Py1 + Pry * Px1);
+        sq = sq < 0 ? 0 : sq;
+        double coef = sign * Math.sqrt(sq);
+        double cx1 = coef * (rx * y1 / ry);
+        double cy1 = coef * -(ry * x1 / rx);
 
         double sx2 = (x0 + x) / 2.0;
         double sy2 = (y0 + y) / 2.0;
@@ -289,15 +288,15 @@ class PathParser {
         double p, n;
 
         // Compute the angle start
-        n = Math.sqrt((ux * ux) + (uy * uy));
+        n = Math.sqrt(ux * ux + uy * uy);
         p = ux; // (1 * ux) + (0 * uy)
-        sign = (uy < 0) ? -1.0 : 1.0;
+        sign = uy < 0 ? -1.0 : 1.0;
         double angleStart = Math.toDegrees(sign * Math.acos(p / n));
 
         // Compute the angle extent
         n = Math.sqrt((ux * ux + uy * uy) * (vx * vx + vy * vy));
         p = ux * vx + uy * vy;
-        sign = (ux * vy - uy * vx < 0) ? -1.0 : 1.0;
+        sign = ux * vy - uy * vx < 0 ? -1.0 : 1.0;
         double angleExtent = Math.toDegrees(sign * Math.acos(p / n));
         if (!sweepFlag && angleExtent > 0) {
             angleExtent -= 360f;

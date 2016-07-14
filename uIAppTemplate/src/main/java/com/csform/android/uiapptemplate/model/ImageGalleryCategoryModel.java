@@ -80,9 +80,9 @@ public class ImageGalleryCategoryModel implements Parcelable {
         dest.writeString(mUrl);
         dest.writeString(mTitle);
         if (mSubcategories == null) {
-            dest.writeByte((byte) (0x00));
+            dest.writeByte((byte) 0x00);
         } else {
-            dest.writeByte((byte) (0x01));
+            dest.writeByte((byte) 0x01);
             dest.writeList(mSubcategories);
         }
         dest.writeByte((byte) (mFavourite ? 0x01 : 0x00));

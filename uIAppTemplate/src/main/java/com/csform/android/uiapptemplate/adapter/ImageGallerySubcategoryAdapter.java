@@ -35,7 +35,7 @@ public class ImageGallerySubcategoryAdapter extends BaseAdapter /*implements OnC
 
     @Override
     public int getItemViewType(int position) {
-        if ((position == mImageGallerySubcategories.size() / 2) && (mImageGallerySubcategories.size() % 2 == 1)) {
+        if (position == mImageGallerySubcategories.size() / 2 && mImageGallerySubcategories.size() % 2 == 1) {
             return TYPE_ONE_COLUMN;
         } else {
             return TYPE_TWO_COLUMNS;
@@ -49,7 +49,7 @@ public class ImageGallerySubcategoryAdapter extends BaseAdapter /*implements OnC
 
     @Override
     public int getCount() {
-        return (mImageGallerySubcategories.size() / 2) + (mImageGallerySubcategories.size() % 2);
+        return mImageGallerySubcategories.size() / 2 + mImageGallerySubcategories.size() % 2;
     }
 
     @Override

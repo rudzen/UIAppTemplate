@@ -64,7 +64,7 @@ class WrapperViewList extends ListView {
 				int firstVisibleItem = getFixedFirstVisibleItem();
 				View v = getChildAt(selectorPosition - firstVisibleItem);
 				if (v instanceof WrapperView) {
-					WrapperView wrapper = ((WrapperView) v);
+					WrapperView wrapper = (WrapperView) v;
 					mSelectorRect.top = wrapper.getTop() + wrapper.mItemTop;
 				}
 			}

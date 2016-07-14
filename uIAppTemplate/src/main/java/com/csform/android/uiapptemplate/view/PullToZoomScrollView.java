@@ -255,7 +255,7 @@ public class PullToZoomScrollView extends ScrollView {
             if (isParallax) {
                 float f = mZoomHeight - mZoomContainer.getBottom() + getScrollY();
                 //Log.d(TAG, "f = " + f);
-                if ((f > 0.0F) && (f < mZoomHeight)) {
+                if (f > 0.0F && f < mZoomHeight) {
                     int i = (int) (0.65D * f);
                     mHeaderContainer.scrollTo(0, -i);
                 } else if (mHeaderContainer.getScrollY() != 0) {
@@ -281,8 +281,8 @@ public class PullToZoomScrollView extends ScrollView {
                     }
                     mLastMotionY = ev.getY();
                     mActivePointerId = ev.getPointerId(0);
-                    mMaxScale = (mScreenHeight / mZoomHeight);
-                    mLastScale = (mZoomContainer.getBottom() / mZoomHeight);
+                    mMaxScale = mScreenHeight / mZoomHeight;
+                    mLastScale = mZoomContainer.getBottom() / mZoomHeight;
                     if (onScrollViewZoomListener != null) {
                         onScrollViewZoomListener.onStart();
                     }
@@ -300,7 +300,7 @@ public class PullToZoomScrollView extends ScrollView {
                             FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams) mZoomContainer.getLayoutParams();
                             ViewGroup.LayoutParams headLayoutParams = mHeaderContainer.getLayoutParams();
                             float f = ((ev.getY(j) - mLastMotionY + mZoomContainer.getBottom()) / mZoomHeight - mLastScale) / 2.0F + mLastScale;
-                            if ((mLastScale <= 1.0D) && (f < mLastScale)) {
+                            if (mLastScale <= 1.0D && f < mLastScale) {
                                 localLayoutParams.height = mZoomHeight;
                                 localLayoutParams.width = mZoomWidth;
                                 localLayoutParams.gravity = Gravity.CENTER;
@@ -310,10 +310,10 @@ public class PullToZoomScrollView extends ScrollView {
                                 return super.onTouchEvent(ev);
                             }
                             mLastScale = Math.min(Math.max(f, 1.0F), mMaxScale);
-                            localLayoutParams.height = ((int) (mZoomHeight * mLastScale));
-                            localLayoutParams.width = ((int) (mZoomWidth * mLastScale));
+                            localLayoutParams.height = (int) (mZoomHeight * mLastScale);
+                            localLayoutParams.width = (int) (mZoomWidth * mLastScale);
                             localLayoutParams.gravity = Gravity.CENTER;
-                            headLayoutParams.height = ((int) (mZoomHeight * mLastScale));
+                            headLayoutParams.height = (int) (mZoomHeight * mLastScale);
                             if (localLayoutParams.height < mScreenHeight) {
                                 mZoomContainer.setLayoutParams(localLayoutParams);
                                 mHeaderContainer.setLayoutParams(headLayoutParams);
@@ -346,7 +346,7 @@ public class PullToZoomScrollView extends ScrollView {
     }
 
     private void onSecondaryPointerUp(MotionEvent paramMotionEvent) {
-        int i = (paramMotionEvent.getAction()) >> 8;
+        int i = paramMotionEvent.getAction() >> 8;
         if (paramMotionEvent.getPointerId(i) == mActivePointerId)
             if (i != 0) {
                 mLastMotionY = paramMotionEvent.getY(0);
@@ -383,18 +383,18 @@ public class PullToZoomScrollView extends ScrollView {
             float f2;
             FrameLayout.LayoutParams localLayoutParams;
             ViewGroup.LayoutParams headLayoutParams;
-            if ((!mIsFinished) && (mScale > 1.0D)) {
+            if (!mIsFinished && mScale > 1.0D) {
                 float f1 = ((float) SystemClock.currentThreadTimeMillis() - (float) mStartTime) / (float) mDuration;
                 f2 = mScale - (mScale - 1.0F) * sInterpolator.getInterpolation(f1);
                 localLayoutParams = (FrameLayout.LayoutParams) mZoomContainer.getLayoutParams();
                 headLayoutParams = mHeaderContainer.getLayoutParams();
                 if (f2 > 1.0F) {
                     //Log.d(TAG, "f2 > 1.0");
-                    localLayoutParams.height = ((int) (f2 * mZoomHeight));
-                    localLayoutParams.width = ((int) (f2 * mZoomWidth));
+                    localLayoutParams.height = (int) (f2 * mZoomHeight);
+                    localLayoutParams.width = (int) (f2 * mZoomWidth);
                     localLayoutParams.gravity = Gravity.CENTER;
                     mZoomContainer.setLayoutParams(localLayoutParams);
-                    headLayoutParams.height = ((int) (f2 * mZoomHeight));
+                    headLayoutParams.height = (int) (f2 * mZoomHeight);
                     mHeaderContainer.setLayoutParams(headLayoutParams);
                     post(this);
                     return;
@@ -406,7 +406,7 @@ public class PullToZoomScrollView extends ScrollView {
         public void startAnimation(long paramLong) {
             mStartTime = SystemClock.currentThreadTimeMillis();
             mDuration = paramLong;
-            mScale = ((float) (mZoomContainer.getBottom()) / mZoomHeight);
+            mScale = (float) mZoomContainer.getBottom() / mZoomHeight;
             mIsFinished = false;
             post(this);
         }

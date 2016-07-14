@@ -158,7 +158,7 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
     }
 
     private void onSecondaryPointerUp(MotionEvent paramMotionEvent) {
-        int i = (paramMotionEvent.getAction()) >> 8;
+        int i = paramMotionEvent.getAction() >> 8;
         if (paramMotionEvent.getPointerId(i) == mActivePointerId)
             if (i != 0) {
                 mLastMotionY = paramMotionEvent.getY(0);
@@ -192,7 +192,7 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
             float f = mHeaderHeight - mHeaderContainer.getBottom();
             //Log.d(TAG, "f = " + f);
             if (isParallax) {
-                if ((f > 0.0F) && (f < mHeaderHeight)) {
+                if (f > 0.0F && f < mHeaderHeight) {
                     int i = (int) (0.65D * f);
                     mHeaderContainer.scrollTo(0, -i);
                 } else if (mHeaderContainer.getScrollY() != 0) {
@@ -224,8 +224,8 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
                     }
                     mLastMotionY = paramMotionEvent.getY();
                     mActivePointerId = paramMotionEvent.getPointerId(0);
-                    mMaxScale = (mScreenHeight / mHeaderHeight);
-                    mLastScale = (mHeaderContainer.getBottom() / mHeaderHeight);
+                    mMaxScale = mScreenHeight / mHeaderHeight;
+                    mLastScale = mHeaderContainer.getBottom() / mHeaderHeight;
                     break;
                 case MotionEvent.ACTION_MOVE:
                     //Log.d(TAG, "mActivePointerId" + mActivePointerId);
@@ -239,13 +239,13 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
                         if (mHeaderContainer.getBottom() >= mHeaderHeight) {
                             ViewGroup.LayoutParams localLayoutParams = mHeaderContainer.getLayoutParams();
                             float f = ((paramMotionEvent.getY(j) - mLastMotionY + mHeaderContainer.getBottom()) / mHeaderHeight - mLastScale) / 2.0F + mLastScale;
-                            if ((mLastScale <= 1.0D) && (f < mLastScale)) {
+                            if (mLastScale <= 1.0D && f < mLastScale) {
                                 localLayoutParams.height = mHeaderHeight;
                                 mHeaderContainer.setLayoutParams(localLayoutParams);
                                 return super.onTouchEvent(paramMotionEvent);
                             }
                             mLastScale = Math.min(Math.max(f, 1.0F), mMaxScale);
-                            localLayoutParams.height = ((int) (mHeaderHeight * mLastScale));
+                            localLayoutParams.height = (int) (mHeaderHeight * mLastScale);
                             if (localLayoutParams.height < mScreenHeight) {
                                 mHeaderContainer.setLayoutParams(localLayoutParams);
                             }
@@ -311,13 +311,13 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
             if (mHeaderView != null) {
                 float f2;
                 ViewGroup.LayoutParams localLayoutParams;
-                if ((!mIsFinished) && (mScale > 1.0D)) {
+                if (!mIsFinished && mScale > 1.0D) {
                     float f1 = ((float) SystemClock.currentThreadTimeMillis() - (float) mStartTime) / (float) mDuration;
                     f2 = mScale - (mScale - 1.0F) * PullToZoomListView.sInterpolator.getInterpolation(f1);
                     localLayoutParams = mHeaderContainer.getLayoutParams();
                     if (f2 > 1.0F) {
                         //Log.d(TAG, "f2>1.0");
-                        localLayoutParams.height = ((int) (f2 * mHeaderHeight));
+                        localLayoutParams.height = (int) (f2 * mHeaderHeight);
                         mHeaderContainer.setLayoutParams(localLayoutParams);
                         post(this);
                         return;
@@ -331,7 +331,7 @@ public class PullToZoomListView extends ListView implements AbsListView.OnScroll
             if (mHeaderView != null) {
                 mStartTime = SystemClock.currentThreadTimeMillis();
                 mDuration = paramLong;
-                mScale = ((float) (mHeaderContainer.getBottom()) / mHeaderHeight);
+                mScale = (float) mHeaderContainer.getBottom() / mHeaderHeight;
                 mIsFinished = false;
                 post(this);
             }

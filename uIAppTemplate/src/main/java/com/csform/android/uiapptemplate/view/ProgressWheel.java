@@ -209,10 +209,10 @@ public class ProgressWheel extends View {
 		int yOffset = layout_height - minValue;
 
 		// Add the offset
-		paddingTop = paddingTop + (yOffset / 2);
-		paddingBottom = paddingBottom + (yOffset / 2);
-		paddingLeft = paddingLeft + (xOffset / 2);
-		paddingRight = paddingRight + (xOffset / 2);
+		paddingTop = paddingTop + yOffset / 2;
+		paddingBottom = paddingBottom + yOffset / 2;
+		paddingLeft = paddingLeft + xOffset / 2;
+		paddingRight = paddingRight + xOffset / 2;
 
 		int width = getWidth(); // this.getLayoutParams().width;
 		int height = getHeight(); // this.getLayoutParams().height;
@@ -223,19 +223,19 @@ public class ProgressWheel extends View {
 		circleBounds = new RectF(paddingLeft + barWidth, paddingTop + barWidth,
 				width - paddingRight - barWidth, height - paddingBottom
 						- barWidth);
-		circleInnerContour = new RectF(circleBounds.left + (rimWidth / 2.0f)
-				+ (contourSize / 2.0f), circleBounds.top + (rimWidth / 2.0f)
-				+ (contourSize / 2.0f), circleBounds.right - (rimWidth / 2.0f)
-				- (contourSize / 2.0f), circleBounds.bottom - (rimWidth / 2.0f)
-				- (contourSize / 2.0f));
-		circleOuterContour = new RectF(circleBounds.left - (rimWidth / 2.0f)
-				- (contourSize / 2.0f), circleBounds.top - (rimWidth / 2.0f)
-				- (contourSize / 2.0f), circleBounds.right + (rimWidth / 2.0f)
-				+ (contourSize / 2.0f), circleBounds.bottom + (rimWidth / 2.0f)
-				+ (contourSize / 2.0f));
+		circleInnerContour = new RectF(circleBounds.left + rimWidth / 2.0f
+				+ contourSize / 2.0f, circleBounds.top + rimWidth / 2.0f
+				+ contourSize / 2.0f, circleBounds.right - rimWidth / 2.0f
+				- contourSize / 2.0f, circleBounds.bottom - rimWidth / 2.0f
+				- contourSize / 2.0f);
+		circleOuterContour = new RectF(circleBounds.left - rimWidth / 2.0f
+				- contourSize / 2.0f, circleBounds.top - rimWidth / 2.0f
+				- contourSize / 2.0f, circleBounds.right + rimWidth / 2.0f
+				+ contourSize / 2.0f, circleBounds.bottom + rimWidth / 2.0f
+				+ contourSize / 2.0f);
 
 		fullRadius = (width - paddingRight - barWidth) / 2;
-		circleRadius = (fullRadius - barWidth) + 1;
+		circleRadius = fullRadius - barWidth + 1;
 	}
 
 	/**
@@ -312,7 +312,7 @@ public class ProgressWheel extends View {
 		}
 		// Draw the text (attempts to center it horizontally and vertically)
 		float textHeight = textPaint.descent() - textPaint.ascent();
-		float verticalTextOffset = (textHeight / 2) - textPaint.descent();
+		float verticalTextOffset = textHeight / 2 - textPaint.descent();
 
 		for (String s : splitText) {
 			float horizontalTextOffset = textPaint.measureText(s) / 2;

@@ -39,7 +39,7 @@ public class ImageGalleryCategoryAdapter extends BaseAdapter implements OnClickL
 
     @Override
     public int getItemViewType(int position) {
-        if ((position == mImageGalleryCategories.size() / 2) && (mImageGalleryCategories.size() % 2 == 1)) {
+        if (position == mImageGalleryCategories.size() / 2 && mImageGalleryCategories.size() % 2 == 1) {
             return TYPE_ONE_COLUMN;
         } else {
             return TYPE_TWO_COLUMNS;
@@ -53,7 +53,7 @@ public class ImageGalleryCategoryAdapter extends BaseAdapter implements OnClickL
 
     @Override
     public int getCount() {
-        return (mImageGalleryCategories.size() / 2) + (mImageGalleryCategories.size() % 2);
+        return mImageGalleryCategories.size() / 2 + mImageGalleryCategories.size() % 2;
     }
 
     @Override

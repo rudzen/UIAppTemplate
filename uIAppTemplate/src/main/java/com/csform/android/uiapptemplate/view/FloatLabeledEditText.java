@@ -173,11 +173,11 @@ public class FloatLabeledEditText extends LinearLayout {
     private void setShowHint(final boolean show) {
         AnimatorSet animation = new AnimatorSet();
         animation.setDuration(650);
-        if ((hintTextView.getVisibility() == VISIBLE) && !show) {
+        if (hintTextView.getVisibility() == VISIBLE && !show) {
             ObjectAnimator move = ObjectAnimator.ofFloat(hintTextView, "translationY", 0, hintTextView.getHeight() / 8);
             ObjectAnimator fade = ObjectAnimator.ofFloat(hintTextView, "alpha", 1, 0);
             animation.playTogether(move, fade);
-        } else if ((hintTextView.getVisibility() != VISIBLE) && show) {
+        } else if (hintTextView.getVisibility() != VISIBLE && show) {
             ObjectAnimator move = ObjectAnimator.ofFloat(hintTextView, "translationY", hintTextView.getHeight() / 8, 0);
             ObjectAnimator fade = ObjectAnimator.ofFloat(hintTextView, "alpha", 0, 1);
             animation.playTogether(move, fade);
