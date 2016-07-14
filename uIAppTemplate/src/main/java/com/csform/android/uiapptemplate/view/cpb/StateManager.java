@@ -2,7 +2,7 @@ package com.csform.android.uiapptemplate.view.cpb;
 
 class StateManager {
 
-    private boolean mIsEnabled;
+    private final boolean mIsEnabled;
     private int mProgress;
 
     public StateManager(CircularProgressButton progressButton) {
@@ -23,9 +23,9 @@ class StateManager {
     }
 
     public void checkState(CircularProgressButton progressButton) {
-        if (progressButton.getProgress() != getProgress()) {
+        if (progressButton.getProgress() != mProgress) {
             progressButton.setProgress(progressButton.getProgress());
-        } else if(progressButton.isEnabled() != isEnabled()) {
+        } else if (progressButton.isEnabled() != mIsEnabled) {
             progressButton.setEnabled(progressButton.isEnabled());
         }
     }

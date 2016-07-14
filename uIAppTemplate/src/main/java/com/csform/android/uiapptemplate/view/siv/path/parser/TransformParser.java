@@ -14,7 +14,7 @@ class TransformParser {
         Matrix matrix = new Matrix();
         while (true) {
             parseTransformItem(s, matrix);
-            int rparen = s.indexOf(")");
+            int rparen = s.indexOf(')');
             if (rparen > 0 && s.length() > rparen + 1) {
                 s = s.substring(rparen + 1).replaceFirst("[\\s,]*", "");
             } else {
@@ -47,7 +47,7 @@ class TransformParser {
             }
         } else if (s.startsWith("translate(")) {
             NumberParse np = NumberParse.parseNumbers(s.substring("translate(".length()));
-            if (np.numbers.size() > 0) {
+            if (!np.numbers.isEmpty()) {
                 float tx = np.numbers.get(0);
                 float ty = 0;
                 if (np.numbers.size() > 1) {
@@ -57,7 +57,7 @@ class TransformParser {
             }
         } else if (s.startsWith("scale(")) {
             NumberParse np = NumberParse.parseNumbers(s.substring("scale(".length()));
-            if (np.numbers.size() > 0) {
+            if (!np.numbers.isEmpty()) {
                 float sx = np.numbers.get(0);
                 float sy = sx;
                 if (np.numbers.size() > 1) {
@@ -67,19 +67,19 @@ class TransformParser {
             }
         } else if (s.startsWith("skewX(")) {
             NumberParse np = NumberParse.parseNumbers(s.substring("skewX(".length()));
-            if (np.numbers.size() > 0) {
+            if (!np.numbers.isEmpty()) {
                 float angle = np.numbers.get(0);
                 matrix.preSkew((float) Math.tan(angle), 0);
             }
         } else if (s.startsWith("skewY(")) {
             NumberParse np = NumberParse.parseNumbers(s.substring("skewY(".length()));
-            if (np.numbers.size() > 0) {
+            if (!np.numbers.isEmpty()) {
                 float angle = np.numbers.get(0);
                 matrix.preSkew(0, (float) Math.tan(angle));
             }
         } else if (s.startsWith("rotate(")) {
             NumberParse np = NumberParse.parseNumbers(s.substring("rotate(".length()));
-            if (np.numbers.size() > 0) {
+            if (!np.numbers.isEmpty()) {
                 float angle = np.numbers.get(0);
                 float cx = 0;
                 float cy = 0;
@@ -92,7 +92,7 @@ class TransformParser {
                 matrix.preTranslate(-cx, -cy);
             }
         } else {
-            Log.w(TAG, "Invalid transform (" + s + ")");
+            Log.w(TAG, "Invalid transform (" + s + ')');
         }
     }
 }

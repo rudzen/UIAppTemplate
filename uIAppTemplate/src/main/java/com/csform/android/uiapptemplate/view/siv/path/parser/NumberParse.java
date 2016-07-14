@@ -21,7 +21,7 @@ class NumberParse {
         return numbers.get(index);
     }
 
-    static final NumberParse getNumberParseAttr(String name, XmlPullParser attributes) {
+    static NumberParse getNumberParseAttr(String name, XmlPullParser attributes) {
         int n = attributes.getAttributeCount();
         for (int i = 0; i < n; i++) {
             if (attributes.getAttributeName(i).equals(name)) {
@@ -34,7 +34,7 @@ class NumberParse {
     static NumberParse parseNumbers(String s) {
         int n = s.length();
         int p = 0;
-        ArrayList<Float> numbers = new ArrayList<Float>();
+        ArrayList<Float> numbers = new ArrayList<>();
         boolean skipChar = false;
         for (int i = 1; i < n; i++) {
             if (skipChar) {
@@ -66,7 +66,7 @@ class NumberParse {
                 case 'A':
                 case ')': {
                     String str = s.substring(p, i);
-                    if (str.trim().length() > 0) {
+                    if (!str.trim().isEmpty()) {
                         Float f = Float.parseFloat(str);
                         numbers.add(f);
                     }
@@ -79,7 +79,7 @@ class NumberParse {
                 case ',':{
                     String str = s.substring(p, i);
                     // Just keep moving if multiple whitespace
-                    if (str.trim().length() > 0) {
+                    if (!str.trim().isEmpty()) {
                         Float f = Float.parseFloat(str);
                         numbers.add(f);
                         if (c == '-') {
@@ -96,7 +96,7 @@ class NumberParse {
             }
         }
         String last = s.substring(p);
-        if (last.length() > 0) {
+        if (!last.isEmpty()) {
             try {
                 numbers.add(Float.parseFloat(last));
             } catch (NumberFormatException nfe) {

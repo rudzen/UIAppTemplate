@@ -18,7 +18,7 @@ package com.csform.android.uiapptemplate;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -30,7 +30,7 @@ import com.nhaarman.listviewanimations.appearance.simple.SwingBottomInAnimationA
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.OnDismissCallback;
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.SwipeDismissAdapter;
 
-public class GoogleCardsActivity extends ActionBarActivity implements OnDismissCallback {
+public class GoogleCardsActivity extends AppCompatActivity implements OnDismissCallback {
 
 	private static final int INITIAL_DELAY_MILLIS = 300;
 

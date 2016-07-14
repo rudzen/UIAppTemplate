@@ -48,7 +48,7 @@ public final class MathUtils {
         float dstRectRatio = MathUtils.truncate(MathUtils.getRectRatio(r2), 2);
         
         // Compares aspect ratios that allows for a tolerance range of [0, 0.01] 
-        return (Math.abs(srcRectRatio-dstRectRatio) <= 0.01f);
+        return Math.abs(srcRectRatio - dstRectRatio) <= 0.01f;
     }
 
 

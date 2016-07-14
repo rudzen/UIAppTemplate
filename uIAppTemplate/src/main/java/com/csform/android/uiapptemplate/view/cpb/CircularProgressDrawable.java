@@ -11,10 +11,10 @@ import android.graphics.drawable.Drawable;
 class CircularProgressDrawable extends Drawable {
 
     private float mSweepAngle;
-    private float mStartAngle;
-    private int mSize;
-    private int mStrokeWidth;
-    private int mStrokeColor;
+    private final float mStartAngle;
+    private final int mSize;
+    private final int mStrokeWidth;
+    private final int mStrokeColor;
 
     public CircularProgressDrawable(int size, int strokeWidth, int strokeColor) {
         mSize = size;
@@ -66,7 +66,7 @@ class CircularProgressDrawable extends Drawable {
     private RectF getRect() {
         if (mRectF == null) {
             int index = mStrokeWidth / 2;
-            mRectF = new RectF(index, index, getSize() - index, getSize() - index);
+            mRectF = new RectF(index, index, mSize - index, mSize - index);
         }
         return mRectF;
     }

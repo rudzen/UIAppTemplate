@@ -1,10 +1,8 @@
 package com.csform.android.uiapptemplate;
 
-import java.util.Random;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +24,9 @@ import com.nhaarman.listviewanimations.itemmanipulation.dragdrop.TouchViewDragga
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.OnDismissCallback;
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.undo.SimpleSwipeUndoAdapter;
 
-public class ListViewsActivity extends ActionBarActivity {
+import java.util.Random;
+
+public class ListViewsActivity extends AppCompatActivity {
 
 	public static final String LIST_VIEW_OPTION = "com.csform.android.uiapptemplate.ListViewsActivity";
 	public static final String LIST_VIEW_OPTION_1 = "Expandable";
@@ -67,15 +67,20 @@ public class ListViewsActivity extends ActionBarActivity {
 	}
 
 	private void setUpListView(String category) {
-		if (category.equals(LIST_VIEW_OPTION_2)) {
-			setUpDragAndDrop();
-			Toast.makeText(this, "Long press an item to start dragging", Toast.LENGTH_SHORT).show();
-		} else if (category.equals(LIST_VIEW_OPTION_3)) {
-			setUpSwipeToDissmiss();
-		} else if (category.equals(LIST_VIEW_OPTION_4)) {
-			appearanceAnimate(0);
-		} else if (category.equals(LIST_VIEW_OPTION_5)) {
-			appearanceAnimate(new Random().nextInt(5));
+		switch (category) {
+			case LIST_VIEW_OPTION_2:
+				setUpDragAndDrop();
+				Toast.makeText(this, "Long press an item to start dragging", Toast.LENGTH_SHORT).show();
+				break;
+			case LIST_VIEW_OPTION_3:
+				setUpSwipeToDissmiss();
+				break;
+			case LIST_VIEW_OPTION_4:
+				appearanceAnimate(0);
+				break;
+			case LIST_VIEW_OPTION_5:
+				appearanceAnimate(new Random().nextInt(5));
+				break;
 		}
 	}
 
@@ -96,18 +101,8 @@ public class ListViewsActivity extends ActionBarActivity {
 	}
 	
 	private void setUpSwipeToDissmiss() {
-		final DefaultAdapter adapter = new DefaultAdapter(this,
-				DummyContent.getDummyModelList(), false);
-		SimpleSwipeUndoAdapter swipeUndoAdapter = new SimpleSwipeUndoAdapter(adapter, this,
-		    new OnDismissCallback() {
-		        @Override
-		        public void onDismiss(@NonNull final ViewGroup listView, @NonNull final int[] reverseSortedPositions) {
-		            for (int position : reverseSortedPositions) {
-		            	adapter.remove(position);
-		            }
-		        }
-		    }
-		);
+		final DefaultAdapter adapter = new DefaultAdapter(this, DummyContent.getDummyModelList(), false);
+		SimpleSwipeUndoAdapter swipeUndoAdapter = new SimpleSwipeUndoAdapter(adapter, this, new SwipeUndoDismissCallback(adapter));
 		swipeUndoAdapter.setAbsListView(mDynamicListView);
 		mDynamicListView.setAdapter(swipeUndoAdapter);
 		mDynamicListView.enableSimpleSwipeUndo();
@@ -137,5 +132,18 @@ public class ListViewsActivity extends ActionBarActivity {
 		}
 		animAdapter.setAbsListView(mDynamicListView);
 		mDynamicListView.setAdapter(animAdapter);
+	}
+
+	private static class SwipeUndoDismissCallback implements OnDismissCallback {
+		private final DefaultAdapter adapter;
+
+		public SwipeUndoDismissCallback(final DefaultAdapter adapter) {this.adapter = adapter;}
+
+		@Override
+		public void onDismiss(@NonNull final ViewGroup listView, @NonNull final int[] reverseSortedPositions) {
+			for (int position : reverseSortedPositions) {
+				adapter.remove(position);
+			}
+		}
 	}
 }

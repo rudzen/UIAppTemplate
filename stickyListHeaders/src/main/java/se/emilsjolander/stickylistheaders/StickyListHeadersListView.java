@@ -74,7 +74,7 @@ public class StickyListHeadersListView extends FrameLayout {
     }
 
     /* --- Children --- */
-    private WrapperViewList mList;
+    private final WrapperViewList mList;
     private View mHeader;
 
     /* --- Header state --- */
@@ -1023,10 +1023,7 @@ public class StickyListHeadersListView extends FrameLayout {
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public boolean isFastScrollAlwaysVisible() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
-            return false;
-        }
-        return mList.isFastScrollAlwaysVisible();
+        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB && mList.isFastScrollAlwaysVisible();
     }
 
     public void setScrollBarStyle(int style) {

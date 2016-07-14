@@ -1,7 +1,5 @@
 package com.csform.android.uiapptemplate.adapter;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -19,16 +17,18 @@ import com.csform.android.uiapptemplate.R;
 import com.csform.android.uiapptemplate.model.ImageGalleryCategoryModel;
 import com.csform.android.uiapptemplate.util.ImageUtil;
 
+import java.util.ArrayList;
+
 public class ImageGalleryCategoryAdapter extends BaseAdapter implements OnClickListener {
 	 
     private static final int TYPE_ONE_COLUMN = 0;
     private static final int TYPE_TWO_COLUMNS = 1;
     private static final int TYPE_MAX_COUNT = TYPE_TWO_COLUMNS + 1;
-	
-	private Context mContext;
-	private LayoutInflater mInflater;
-	private ArrayList<ImageGalleryCategoryModel> mImageGalleryCategories;
-	private boolean mIsLayoutOnTop;
+
+	private final Context mContext;
+	private final LayoutInflater mInflater;
+	private final ArrayList<ImageGalleryCategoryModel> mImageGalleryCategories;
+	private final boolean mIsLayoutOnTop;
 	
 	public ImageGalleryCategoryAdapter(Context context,
 			ArrayList<ImageGalleryCategoryModel> imageGalleryCategories, boolean isLayoutOnTop) {

@@ -53,7 +53,7 @@ public class FloatLabeledEditText extends LinearLayout {
     private TextView hintTextView;
     private EditText editText;
 
-    private Context mContext;
+    private final Context mContext;
 
     public FloatLabeledEditText(Context context) {
         super(context);
@@ -144,7 +144,7 @@ public class FloatLabeledEditText extends LinearLayout {
         editText.setOnFocusChangeListener(onFocusChanged);
     }
 
-    private TextWatcher onTextChanged = new TextWatcher() {
+    private final TextWatcher onTextChanged = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
         }
@@ -159,7 +159,7 @@ public class FloatLabeledEditText extends LinearLayout {
         }
     };
 
-    private OnFocusChangeListener onFocusChanged = new OnFocusChangeListener() {
+    private final OnFocusChangeListener onFocusChanged = new OnFocusChangeListener() {
         @Override
         public void onFocusChange(View view, boolean gotFocus) {
             if (gotFocus) {

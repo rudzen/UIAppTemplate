@@ -1,8 +1,5 @@
 package com.csform.android.uiapptemplate.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +15,9 @@ import com.csform.android.uiapptemplate.ParallaxKenBurnsActivity;
 import com.csform.android.uiapptemplate.R;
 import com.csform.android.uiapptemplate.adapter.SubcategoryAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ParallaxEffectsFragment extends Fragment implements OnItemClickListener {
 
 	private ListView mListView;
@@ -30,7 +30,7 @@ public class ParallaxEffectsFragment extends Fragment implements OnItemClickList
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mParallaxEffects = new ArrayList<String>();
+		mParallaxEffects = new ArrayList<>();
 		mParallaxEffects.add(ParallaxKenBurnsActivity.TAG);
 		mParallaxEffects.add(ParallaxActivity.TAG);
 	}

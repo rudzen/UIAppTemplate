@@ -1,12 +1,5 @@
 package com.csform.android.uiapptemplate.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.csform.android.uiapptemplate.R;
-import com.csform.android.uiapptemplate.SearchBarsActivity;
-import com.csform.android.uiapptemplate.adapter.SubcategoryAdapter;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+
+import com.csform.android.uiapptemplate.R;
+import com.csform.android.uiapptemplate.SearchBarsActivity;
+import com.csform.android.uiapptemplate.adapter.SubcategoryAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchBarsFragment extends Fragment implements OnItemClickListener {
 
@@ -29,7 +29,7 @@ public class SearchBarsFragment extends Fragment implements OnItemClickListener 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mSearchBars = new ArrayList<String>();
+		mSearchBars = new ArrayList<>();
 		mSearchBars.add(SearchBarsActivity.SEARCH_BARS_DARK);
 		mSearchBars.add(SearchBarsActivity.SEARCH_BARS_LIGHT);
 	}

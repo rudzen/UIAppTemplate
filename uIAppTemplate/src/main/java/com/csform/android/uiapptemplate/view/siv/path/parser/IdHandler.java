@@ -12,8 +12,8 @@ import java.util.Stack;
 class IdHandler {
     private static final String TAG = SvgToPath.TAG;
 
-    final HashMap<String, String> idXml = new HashMap<String, String>();
-    private final Stack<IdRecording> idRecordingStack = new Stack<IdRecording>();
+    final HashMap<String, String> idXml = new HashMap<>();
+    private final Stack<IdRecording> idRecordingStack = new Stack<>();
 
     private final XmlPullParser atts;
 
@@ -53,16 +53,16 @@ class IdHandler {
 
 
     private void appendElementString(StringBuilder sb, String localName, XmlPullParser atts) {
-        sb.append("<");
+        sb.append('<');
         sb.append(localName);
         for (int i = 0; i < atts.getAttributeCount(); i++) {
-            sb.append(" ");
+            sb.append(' ');
             sb.append(atts.getAttributeName(i));
             sb.append("='");
             sb.append(ParseUtil.escape(atts.getAttributeValue(i)));
-            sb.append("'");
+            sb.append('\'');
         }
-        sb.append(">");
+        sb.append('>');
     }
 
     void startElement() {
@@ -72,7 +72,7 @@ class IdHandler {
             IdRecording ir = new IdRecording(id);
             idRecordingStack.push(ir);
         }
-        if (idRecordingStack.size() > 0){
+        if (!idRecordingStack.isEmpty()) {
             IdRecording ir = idRecordingStack.lastElement();
             ir.level++;
             //appendElementString(ir.sb, atts.getNamespace(), localName, atts.getName(), atts);
@@ -82,18 +82,18 @@ class IdHandler {
 
     void endElement() {
         String localName = atts.getName();
-        if (idRecordingStack.size() > 0){
+        if (!idRecordingStack.isEmpty()) {
             IdRecording ir = idRecordingStack.lastElement();
             ir.sb.append("</");
             ir.sb.append(localName);
-            ir.sb.append(">");
+            ir.sb.append('>');
             ir.level--;
             if (ir.level == 0) {
                 String xml = ir.sb.toString();
                 //Log.d(TAG, "Added element with id " + ir.id + " and content: " + xml);
                 idXml.put(ir.id, xml);
                 idRecordingStack.pop();
-                if (idRecordingStack.size() > 0){
+                if (!idRecordingStack.isEmpty()) {
                     idRecordingStack.lastElement().sb.append(xml);
                 }
                 Log.w(TAG, xml);

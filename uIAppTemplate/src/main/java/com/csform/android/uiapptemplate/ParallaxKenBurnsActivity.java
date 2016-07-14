@@ -44,11 +44,11 @@ public class ParallaxKenBurnsActivity extends Activity {
 	private View mHeader;
 	private View mPlaceHolderView;
 	private AccelerateDecelerateInterpolator mSmoothInterpolator;
-	private RectF mRect1 = new RectF();
-	private RectF mRect2 = new RectF();
+	private final RectF mRect1 = new RectF();
+	private final RectF mRect2 = new RectF();
 	private AlphaForegroundColorSpan mAlphaForegroundColorSpan;
 	private SpannableString mSpannableString;
-	private TypedValue mTypedValue = new TypedValue();
+	private final TypedValue mTypedValue = new TypedValue();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

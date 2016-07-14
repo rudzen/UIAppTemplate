@@ -27,6 +27,6 @@ public interface TransitionGenerator {
      *                 {@link KenBurnsView}.
      * @return a {@link Transition} object to be played by the {@link KenBurnsView}.
      */
-    public Transition generateNextTransition(RectF drawableBounds, RectF viewport);
+    Transition generateNextTransition(RectF drawableBounds, RectF viewport);
 
 }

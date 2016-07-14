@@ -4,7 +4,7 @@ import org.xmlpull.v1.XmlPullParser;
 
 class ParseUtil {
 
-    static final String escape (String s) {
+    static String escape(String s) {
         return s
                 .replaceAll("\"", "&quot;")
                 .replaceAll("'", "&apos")
@@ -13,7 +13,7 @@ class ParseUtil {
                 .replaceAll("&", "&amp;");
     }
 
-    static final String getStringAttr(String name, XmlPullParser attributes) {
+    static String getStringAttr(String name, XmlPullParser attributes) {
         int n = attributes.getAttributeCount();
         for (int i = 0; i < n; i++) {
             if (attributes.getAttributeName(i).equals(name)) {
@@ -26,7 +26,7 @@ class ParseUtil {
     /*
      * Some SVG unit conversions.  This is approximate
      */
-    static final Float convertUnits(String name, XmlPullParser atts, float dpi, float width, float height) {
+    static Float convertUnits(String name, XmlPullParser atts, float dpi, float width, float height) {
         String value = getStringAttr(name, atts);
         if (value == null) {
             return null;

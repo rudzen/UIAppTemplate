@@ -1,8 +1,5 @@
 package com.csform.android.uiapptemplate.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +14,9 @@ import com.csform.android.uiapptemplate.R;
 import com.csform.android.uiapptemplate.SplashScreensActivity;
 import com.csform.android.uiapptemplate.adapter.SubcategoryAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SplashScreensFragment extends Fragment implements OnItemClickListener {
 
 	private ListView mListView;
@@ -29,7 +29,7 @@ public class SplashScreensFragment extends Fragment implements OnItemClickListen
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mSplashScreens = new ArrayList<String>();
+		mSplashScreens = new ArrayList<>();
 		mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_1);
 		mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_2);
 		mSplashScreens.add(SplashScreensActivity.SPLASH_SCREEN_OPTION_3);

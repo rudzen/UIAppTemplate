@@ -1,8 +1,5 @@
 package se.emilsjolander.stickylistheaders;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
@@ -12,6 +9,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Checkable;
 import android.widget.ListAdapter;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * A {@link ListAdapter} which wraps a {@link StickyListHeadersAdapter} and
@@ -30,12 +30,12 @@ class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdapter {
 	}
 
 	final StickyListHeadersAdapter mDelegate;
-	private final List<View> mHeaderCache = new LinkedList<View>();
+	private final List<View> mHeaderCache = new LinkedList<>();
 	private final Context mContext;
 	private Drawable mDivider;
 	private int mDividerHeight;
 	private OnHeaderClickListener mOnHeaderClickListener;
-	private DataSetObserver mDataSetObserver = new DataSetObserver() {
+	private final DataSetObserver mDataSetObserver = new DataSetObserver() {
 
 		@Override
 		public void onInvalidated() {
@@ -145,7 +145,7 @@ class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdapter {
 	}
 
 	private View popHeader() {
-		if(mHeaderCache.size() > 0) {
+		if (!mHeaderCache.isEmpty()) {
 			return mHeaderCache.remove(0);
 		}
 		return null;
@@ -160,7 +160,7 @@ class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdapter {
 
 	@Override
 	public WrapperView getView(int position, View convertView, ViewGroup parent) {
-		WrapperView wv = (convertView == null) ? new WrapperView(mContext) : (WrapperView) convertView;
+		WrapperView wv = convertView == null ? new WrapperView(mContext) : (WrapperView) convertView;
 		View item = mDelegate.getView(position, wv.mItem, parent);
 		View header = null;
 		if (previousPositionHasSameHeader(position)) {
@@ -168,10 +168,10 @@ class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdapter {
 		} else {
 			header = configureHeader(wv, position);
 		}
-		if((item instanceof Checkable) && !(wv instanceof CheckableWrapperView)) {
+		if (item instanceof Checkable && !(wv instanceof CheckableWrapperView)) {
 			// Need to create Checkable subclass of WrapperView for ListView to work correctly
 			wv = new CheckableWrapperView(mContext);
-		} else if(!(item instanceof Checkable) && (wv instanceof CheckableWrapperView)) {
+		} else if (!(item instanceof Checkable) && wv instanceof CheckableWrapperView) {
 			wv = new WrapperView(mContext);
 		}
 		wv.update(item, header, mDivider, mDividerHeight);
@@ -184,7 +184,7 @@ class AdapterWrapper extends BaseAdapter implements StickyListHeadersAdapter {
 
 	@Override
 	public boolean equals(Object o) {
-		return mDelegate.equals(o); 
+		return mDelegate.equals(o);
 	}
 
 	@Override

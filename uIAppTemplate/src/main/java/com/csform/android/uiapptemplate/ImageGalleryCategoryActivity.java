@@ -1,7 +1,7 @@
 package com.csform.android.uiapptemplate;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.BaseAdapter;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.csform.android.uiapptemplate.adapter.ImageGalleryCategoryAdapter;
 import com.csform.android.uiapptemplate.util.DummyContent;
 
-public class ImageGalleryCategoryActivity extends ActionBarActivity {
+public class ImageGalleryCategoryActivity extends AppCompatActivity {
 	
 	public static final String IMAGE_GALLERY_CATEGORY = "com.csform.android.uiapptemplate.ImageGalleryCategoryActivity";
 	public static final String ANIMALS_CATEGORY = "Category 1 (Animals)";

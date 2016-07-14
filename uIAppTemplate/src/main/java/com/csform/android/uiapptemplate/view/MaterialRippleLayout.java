@@ -16,7 +16,6 @@
 
 package com.csform.android.uiapptemplate.view;
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
@@ -49,6 +48,8 @@ import android.widget.AdapterView;
 import android.widget.FrameLayout;
 
 import com.csform.android.uiapptemplate.R;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 @SuppressLint("ClickableViewAccessibility")
 public class MaterialRippleLayout extends FrameLayout {
@@ -91,14 +92,14 @@ public class MaterialRippleLayout extends FrameLayout {
     private AnimatorSet    rippleAnimator;
     private ObjectAnimator hoverAnimator;
 
-    private Point currentCoords  = new Point();
+    private final Point currentCoords = new Point();
     private Point previousCoords = new Point();
 
     private boolean eventCancelled;
     private boolean prepressed;
     private int     positionInAdapter;
 
-    private GestureDetector   gestureDetector;
+    private final GestureDetector gestureDetector;
     private PerformClickEvent pendingClickEvent;
     private PressedEvent      pendingPressEvent;
 
@@ -275,7 +276,7 @@ public class MaterialRippleLayout extends FrameLayout {
         }
     }
 
-    private SimpleOnGestureListener longClickListener = new GestureDetector.SimpleOnGestureListener() {
+    private final SimpleOnGestureListener longClickListener = new GestureDetector.SimpleOnGestureListener() {
         public void onLongPress(MotionEvent e) {
             childView.performLongClick();
         }
@@ -325,7 +326,7 @@ public class MaterialRippleLayout extends FrameLayout {
 
         if (ripplePersistent) {
             rippleAnimator.play(ripple);
-        } else if (getRadius() > endRadius) {
+        } else if (radius > endRadius) {
             fade.setStartDelay(0);
             rippleAnimator.play(fade);
         } else {
@@ -390,13 +391,13 @@ public class MaterialRippleLayout extends FrameLayout {
 
     private void setPositionInAdapter() {
         if (rippleInAdapter) {
-            positionInAdapter = findParentAdapterView().getPositionForView(MaterialRippleLayout.this);
+            positionInAdapter = findParentAdapterView().getPositionForView(this);
         }
     }
 
     private boolean adapterPositionChanged() {
         if (rippleInAdapter) {
-            int newPosition = findParentAdapterView().getPositionForView(MaterialRippleLayout.this);
+            int newPosition = findParentAdapterView().getPositionForView(this);
             final boolean changed = newPosition != positionInAdapter;
             positionInAdapter = newPosition;
             if (changed) {
@@ -448,7 +449,7 @@ public class MaterialRippleLayout extends FrameLayout {
     /*
      * Animations
      */
-    private Property<MaterialRippleLayout, Float> radiusProperty
+    private final Property<MaterialRippleLayout, Float> radiusProperty
         = new Property<MaterialRippleLayout, Float>(Float.class, "radius") {
         @Override
         public Float get(MaterialRippleLayout object) {
@@ -471,7 +472,7 @@ public class MaterialRippleLayout extends FrameLayout {
         invalidate();
     }
 
-    private Property<MaterialRippleLayout, Integer> circleAlphaProperty
+    private final Property<MaterialRippleLayout, Integer> circleAlphaProperty
         = new Property<MaterialRippleLayout, Integer>(Integer.class, "rippleAlpha") {
         @Override
         public Integer get(MaterialRippleLayout object) {
@@ -618,7 +619,7 @@ public class MaterialRippleLayout extends FrameLayout {
         private int     rippleFadeDuration  = DEFAULT_FADE_DURATION;
         private boolean ripplePersistent    = DEFAULT_PERSISTENT;
         private int     rippleBackground    = DEFAULT_BACKGROUND;
-        private boolean rippleSearchAdapter = DEFAULT_SEARCH_ADAPTER;
+        private final boolean rippleSearchAdapter = DEFAULT_SEARCH_ADAPTER;
 
         public RippleBuilder(View child) {
             this.child = child;
@@ -675,6 +676,7 @@ public class MaterialRippleLayout extends FrameLayout {
             return this;
         }
 
+        @SuppressWarnings("InfiniteRecursion")
         public RippleBuilder rippleInAdapter(boolean inAdapter) {
             this.rippleInAdapter(inAdapter);
             return this;

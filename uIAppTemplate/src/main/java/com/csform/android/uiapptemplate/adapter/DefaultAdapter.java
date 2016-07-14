@@ -1,8 +1,5 @@
 package com.csform.android.uiapptemplate.adapter;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -19,12 +16,15 @@ import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.OnDismissCa
 import com.nhaarman.listviewanimations.itemmanipulation.swipedismiss.undo.UndoAdapter;
 import com.nhaarman.listviewanimations.util.Swappable;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class DefaultAdapter extends BaseAdapter implements Swappable, UndoAdapter, OnDismissCallback {
 
-	private Context mContext;
-	private LayoutInflater mInflater;
-	private ArrayList<DummyModel> mDummyModelList;
-	private boolean mShouldShowDragAndDropIcon;
+	private final Context mContext;
+	private final LayoutInflater mInflater;
+	private final ArrayList<DummyModel> mDummyModelList;
+	private final boolean mShouldShowDragAndDropIcon;
 	
 	public DefaultAdapter(Context context, ArrayList<DummyModel> dummyModelList, boolean shouldShowDragAndDropIcon) {
 		mContext = context;

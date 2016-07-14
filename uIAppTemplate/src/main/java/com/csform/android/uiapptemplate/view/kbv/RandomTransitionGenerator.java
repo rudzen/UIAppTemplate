@@ -51,8 +51,8 @@ public class RandomTransitionGenerator implements TransitionGenerator {
 
 
     public RandomTransitionGenerator(long transitionDuration, Interpolator transitionInterpolator) {
-        setTransitionDuration(transitionDuration);
-        setTransitionInterpolator(transitionInterpolator);
+        mTransitionDuration = transitionDuration;
+        mTransitionInterpolator = transitionInterpolator;
     }
 
 
@@ -107,17 +107,17 @@ public class RandomTransitionGenerator implements TransitionGenerator {
         RectF maxCrop;
 
         if (drawableRatio > viewportRectRatio) {
-            float r = (drawableBounds.height() / viewportRect.height()) * viewportRect.width();
+            float r = drawableBounds.height() / viewportRect.height() * viewportRect.width();
             float b = drawableBounds.height();
             maxCrop = new RectF(0, 0, r, b);
         } else {
             float r = drawableBounds.width();
-            float b = (drawableBounds.width() / viewportRect.width()) * viewportRect.height();
+            float b = drawableBounds.width() / viewportRect.width() * viewportRect.height();
             maxCrop = new RectF(0, 0, r, b);
         }
 
         float randomFloat = MathUtils.truncate(mRandom.nextFloat(), 2);
-        float factor = MIN_RECT_FACTOR + ((1 - MIN_RECT_FACTOR) * randomFloat);
+        float factor = MIN_RECT_FACTOR + (1 - MIN_RECT_FACTOR) * randomFloat;
 
         float width = factor * maxCrop.width();
         float height = factor * maxCrop.height();

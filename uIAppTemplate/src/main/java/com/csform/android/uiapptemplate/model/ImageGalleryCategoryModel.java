@@ -1,9 +1,9 @@
 package com.csform.android.uiapptemplate.model;
 
-import java.util.ArrayList;
-
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import java.util.ArrayList;
 
 public class ImageGalleryCategoryModel implements Parcelable {
 	
@@ -21,7 +21,7 @@ public class ImageGalleryCategoryModel implements Parcelable {
 		mUrl = in.readString();
 		mTitle = in.readString();
 		if (in.readByte() == 0x01) {
-			mSubcategories = new ArrayList<ImageGallerySubcategoryModel>();
+			mSubcategories = new ArrayList<>();
 			in.readList(mSubcategories,
 					ImageGallerySubcategoryModel.class.getClassLoader());
 		} else {

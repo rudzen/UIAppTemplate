@@ -7,7 +7,7 @@ public class StrokeGradientDrawable {
     private int mStrokeWidth;
     private int mStrokeColor;
 
-    private GradientDrawable mGradientDrawable;
+    private final GradientDrawable mGradientDrawable;
 
     public StrokeGradientDrawable(GradientDrawable drawable) {
         mGradientDrawable = drawable;
@@ -19,7 +19,7 @@ public class StrokeGradientDrawable {
 
     public void setStrokeWidth(int strokeWidth) {
         mStrokeWidth = strokeWidth;
-        mGradientDrawable.setStroke(strokeWidth, getStrokeColor());
+        mGradientDrawable.setStroke(strokeWidth, mStrokeColor);
     }
 
     public int getStrokeColor() {
@@ -28,7 +28,7 @@ public class StrokeGradientDrawable {
 
     public void setStrokeColor(int strokeColor) {
         mStrokeColor = strokeColor;
-        mGradientDrawable.setStroke(getStrokeWidth(), strokeColor);
+        mGradientDrawable.setStroke(mStrokeWidth, strokeColor);
     }
 
     public GradientDrawable getGradientDrawable() {

@@ -1,14 +1,14 @@
 package com.csform.android.uiapptemplate;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.csform.android.uiapptemplate.adapter.DefaultAdapter;
 import com.csform.android.uiapptemplate.util.DummyContent;
 import com.csform.android.uiapptemplate.view.PullToZoomListView;
 
-public class ParallaxActivity extends ActionBarActivity {
+public class ParallaxActivity extends AppCompatActivity {
 	
 	public static final String TAG = "Parallax";
 	

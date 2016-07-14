@@ -1,7 +1,5 @@
 package com.csform.android.uiapptemplate.adapter;
 
-import java.util.ArrayList;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +9,12 @@ import android.widget.TextView;
 
 import com.csform.android.uiapptemplate.R;
 
+import java.util.ArrayList;
+
 public class SearchAdapter extends BaseAdapter {
-	
-	private LayoutInflater mInflater;
-	private ArrayList<String> mSubcategories;
+
+	private final LayoutInflater mInflater;
+	private final ArrayList<String> mSubcategories;
 	
 	public SearchAdapter(Context context, ArrayList<String> subcategories) {
 		mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

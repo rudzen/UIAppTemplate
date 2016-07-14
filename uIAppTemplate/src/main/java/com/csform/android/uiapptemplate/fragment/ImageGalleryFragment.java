@@ -1,8 +1,5 @@
 package com.csform.android.uiapptemplate.fragment;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +16,9 @@ import com.csform.android.uiapptemplate.R;
 import com.csform.android.uiapptemplate.adapter.SubcategoryAdapter;
 import com.csform.android.uiapptemplate.util.DummyContent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ImageGalleryFragment extends Fragment implements OnItemClickListener {
 	
 	private ListView mListView;
@@ -31,7 +31,7 @@ public class ImageGalleryFragment extends Fragment implements OnItemClickListene
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		mImageGalleries = new ArrayList<String>();
+		mImageGalleries = new ArrayList<>();
 		mImageGalleries.add(ImageGalleryCategoryActivity.ANIMALS_CATEGORY);
 		mImageGalleries.add(ImageGalleryCategoryActivity.DOGS_SUBCATEGORY);
 		mImageGalleries.add(ImageGalleryCategoryActivity.MUSIC_CATEGORY);

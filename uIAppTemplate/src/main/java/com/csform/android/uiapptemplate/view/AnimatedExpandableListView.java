@@ -1,8 +1,5 @@
 package com.csform.android.uiapptemplate.view;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -19,6 +16,9 @@ import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class defines an ExpandableListView which supports animations for
@@ -243,7 +243,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
      * adapters used with AnimatedExpandableListView MUST extend this class.
      */
     public static abstract class AnimatedExpandableListAdapter extends BaseExpandableListAdapter {
-        private SparseArray<GroupInfo> groupInfo = new SparseArray<GroupInfo>();
+        private final SparseArray<GroupInfo> groupInfo = new SparseArray<>();
         private AnimatedExpandableListView parent;
 
         private static final int STATE_IDLE = 0;
@@ -387,7 +387,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
 
                 final int len = getRealChildrenCount(groupPosition);
                 for (int i = info.firstChildPosition; i < len; i++) {
-                    View childView = getRealChildView(groupPosition, i, (i == len - 1), null, parent);
+                    View childView = getRealChildView(groupPosition, i, i == len - 1, null, parent);
                     
                     LayoutParams p = (LayoutParams) childView.getLayoutParams();
                     if (p == null) {
@@ -494,7 +494,7 @@ public class AnimatedExpandableListView extends ExpandableListView {
     }
 
     private static class DummyView extends View {
-        private List<View> views = new ArrayList<View>();
+        private final List<View> views = new ArrayList<>();
         private Drawable divider;
         private int dividerWidth;
         private int dividerHeight;
@@ -565,10 +565,10 @@ public class AnimatedExpandableListView extends ExpandableListView {
     }
 
     private static class ExpandAnimation extends Animation {
-        private int baseHeight;
-        private int delta;
-        private View view;
-        private GroupInfo groupInfo;
+        private final int baseHeight;
+        private final int delta;
+        private final View view;
+        private final GroupInfo groupInfo;
 
         private ExpandAnimation(View v, int startHeight, int endHeight, GroupInfo info) {
             baseHeight = startHeight;

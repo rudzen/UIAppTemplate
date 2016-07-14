@@ -1,8 +1,5 @@
 package com.csform.android.uiapptemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.res.Configuration;
@@ -10,8 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -34,7 +31,10 @@ import com.csform.android.uiapptemplate.fragment.SplashScreensFragment;
 import com.csform.android.uiapptemplate.fragment.TextViewsFragment;
 import com.csform.android.uiapptemplate.model.DrawerItem;
 
-public class MainActivity extends ActionBarActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
 
 	private ListView mDrawerList;
 	private List<DrawerItem> mDrawerItems;
@@ -305,7 +305,7 @@ public class MainActivity extends ActionBarActivity {
 	
 	private class CommitFragmentRunnable implements Runnable {
 
-		private Fragment fragment;
+		private final Fragment fragment;
 		
 		public CommitFragmentRunnable(Fragment fragment) {
 			this.fragment = fragment;

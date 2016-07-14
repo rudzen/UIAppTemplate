@@ -1,19 +1,19 @@
 package com.csform.android.uiapptemplate.view.siv.path;
 
-import java.io.InputStream;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import android.content.Context;
 
 import com.csform.android.uiapptemplate.view.siv.path.parser.IoUtil;
 import com.csform.android.uiapptemplate.view.siv.path.parser.PathInfo;
 import com.csform.android.uiapptemplate.view.siv.path.parser.SvgToPath;
 
-public class SvgUtil {
-    private static final Map<Integer, PathInfo> PATH_MAP = new ConcurrentHashMap<Integer, PathInfo>();
+import java.io.InputStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-    public static final PathInfo readSvg(Context context, int resId) {
+public class SvgUtil {
+    private static final Map<Integer, PathInfo> PATH_MAP = new ConcurrentHashMap<>();
+
+    public static PathInfo readSvg(Context context, int resId) {
         PathInfo pathInfo = PATH_MAP.get(resId);
         if(pathInfo == null) {
             InputStream is = null;

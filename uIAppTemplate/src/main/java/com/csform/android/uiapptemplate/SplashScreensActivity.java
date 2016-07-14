@@ -46,13 +46,17 @@ public class SplashScreensActivity extends Activity {
 	/** Animation depends on category.
 	 * */
 	private void setAnimation(String category) {
-		if (category.equals(SPLASH_SCREEN_OPTION_1)) {
-			animation1();
-		} else if (category.equals(SPLASH_SCREEN_OPTION_2)) {
-			animation2();
-		} else if (category.equals(SPLASH_SCREEN_OPTION_3)) {
-			animation2();
-			animation3();
+		switch (category) {
+			case SPLASH_SCREEN_OPTION_1:
+				animation1();
+				break;
+			case SPLASH_SCREEN_OPTION_2:
+				animation2();
+				break;
+			case SPLASH_SCREEN_OPTION_3:
+				animation2();
+				animation3();
+				break;
 		}
 	}
 

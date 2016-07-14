@@ -1,7 +1,5 @@
 package com.csform.android.uiapptemplate;
 
-import java.util.ArrayList;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
@@ -18,6 +16,8 @@ import android.widget.Toast;
 import com.csform.android.uiapptemplate.adapter.SearchAdapter;
 import com.csform.android.uiapptemplate.model.DummyModel;
 import com.csform.android.uiapptemplate.util.DummyContent;
+
+import java.util.ArrayList;
 
 public class SearchBarsActivity extends Activity implements OnClickListener {
 	
@@ -41,12 +41,16 @@ public class SearchBarsActivity extends Activity implements OnClickListener {
 		if (extras != null && extras.containsKey(SEARCH_BARS_OPTION)) {
 			option = extras.getString(SEARCH_BARS_OPTION, SEARCH_BARS_DARK);
 		}
-		if (option.equals(SEARCH_BARS_DARK)) {
-			setContentView(R.layout.activity_search_bars_dark);
-		} else if (option.equals(SEARCH_BARS_DARK)) {
-			setContentView(R.layout.activity_search_bars_light);
-		} else {
-			setContentView(R.layout.activity_search_bars_light);
+		switch (option) {
+			case SEARCH_BARS_DARK:
+				setContentView(R.layout.activity_search_bars_dark);
+				break;
+			case SEARCH_BARS_LIGHT:
+				setContentView(R.layout.activity_search_bars_light);
+				break;
+			default:
+				setContentView(R.layout.activity_search_bars_light);
+				break;
 		}
 		
 		mSearchField = (EditText) findViewById(R.id.search_field);
@@ -74,7 +78,7 @@ public class SearchBarsActivity extends Activity implements OnClickListener {
 			@Override
 			public void afterTextChanged(Editable editable) {
 				String searchText = editable.toString().trim();
-				ArrayList<String> searchedArray = new ArrayList<String>();
+				ArrayList<String> searchedArray = new ArrayList<>();
 				for (DummyModel dm : searchableArrayList) {
 					if (dm.getText().toLowerCase().contains(searchText.toLowerCase())) {
 						searchedArray.add(dm.getText());

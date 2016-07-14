@@ -70,7 +70,7 @@ public class KenBurnsView extends ImageView {
     /** Indicates whether the parent constructor was already called.
      * This is needed to distinguish if the image is being set before
      * or after the super class constructor returns. */
-    private boolean mInitialized;
+    private final boolean mInitialized;
 
 
     public KenBurnsView(Context context) {
@@ -351,12 +351,12 @@ public class KenBurnsView extends ImageView {
          * Notifies the start of a transition.
          * @param transition the transition that just started.
          */
-        public void onTransitionStart(Transition transition);
+        void onTransitionStart(Transition transition);
 
         /**
          * Notifies the end of a transition.
          * @param transition the transition that just ended.
          */
-        public void onTransitionEnd(Transition transition);
+        void onTransitionEnd(Transition transition);
     }
 }

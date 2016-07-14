@@ -14,20 +14,20 @@ import java.util.Set;
  * @author lsjwzh
  */
 class DistinctMultiHashMap<TKey, TItemValue> {
-	private IDMapper<TKey, TItemValue> mIDMapper;
+	private final IDMapper<TKey, TItemValue> mIDMapper;
 
 	interface IDMapper<TKey, TItemValue> {
-		public Object keyToKeyId(TKey key);
+		Object keyToKeyId(TKey key);
 
-		public TKey keyIdToKey(Object keyId);
+		TKey keyIdToKey(Object keyId);
 
-		public Object valueToValueId(TItemValue value);
+		Object valueToValueId(TItemValue value);
 
-		public TItemValue valueIdToValue(Object valueId);
+		TItemValue valueIdToValue(Object valueId);
 	}
 
-	LinkedHashMap<Object, List<TItemValue>> mKeyToValuesMap = new LinkedHashMap<Object, List<TItemValue>>();
-	LinkedHashMap<Object, TKey> mValueToKeyIndexer = new LinkedHashMap<Object, TKey>();
+	LinkedHashMap<Object, List<TItemValue>> mKeyToValuesMap = new LinkedHashMap<>();
+	LinkedHashMap<Object, TKey> mValueToKeyIndexer = new LinkedHashMap<>();
 
 	@SuppressWarnings("unchecked")
 	DistinctMultiHashMap() {

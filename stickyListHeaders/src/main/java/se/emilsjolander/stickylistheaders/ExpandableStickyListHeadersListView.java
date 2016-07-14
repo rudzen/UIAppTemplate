@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class ExpandableStickyListHeadersListView extends StickyListHeadersListView {
     public interface IAnimationExecutor{
-        public void executeAnim(View target,int animType);
+        void executeAnim(View target, int animType);
     }
 
     public final static int ANIMATION_COLLAPSE = 1;
@@ -20,19 +20,7 @@ public class ExpandableStickyListHeadersListView extends StickyListHeadersListVi
 
     ExpandableStickyListHeadersAdapter mExpandableStickyListHeadersAdapter;
 
-
-
-    IAnimationExecutor mDefaultAnimExecutor = new IAnimationExecutor() {
-        @Override
-        public void executeAnim(View target, int animType) {
-            if(animType==ANIMATION_EXPAND){
-                target.setVisibility(VISIBLE);
-            }else if(animType==ANIMATION_COLLAPSE){
-                target.setVisibility(GONE);
-            }
-        }
-    };
-
+    IAnimationExecutor mDefaultAnimExecutor = new DefaultIAnimationExecutor();
 
     public ExpandableStickyListHeadersListView(Context context) {
         super(context);
@@ -123,4 +111,14 @@ public class ExpandableStickyListHeadersListView extends StickyListHeadersListVi
 
     }
 
+    private static class DefaultIAnimationExecutor implements IAnimationExecutor {
+        @Override
+        public void executeAnim(View target, int animType) {
+            if (animType == ANIMATION_EXPAND) {
+                target.setVisibility(VISIBLE);
+            } else if (animType == ANIMATION_COLLAPSE) {
+                target.setVisibility(GONE);
+            }
+        }
+    }
 }

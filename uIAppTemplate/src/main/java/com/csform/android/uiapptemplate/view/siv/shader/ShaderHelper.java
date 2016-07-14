@@ -94,7 +94,7 @@ public abstract class ShaderHelper {
 	public void onSizeChanged(int width, int height) {
 		viewWidth = width;
 		viewHeight = height;
-		if (isSquare()) {
+		if (square) {
 			viewWidth = viewHeight = Math.min(width, height);
 		}
 		if (shader != null) {

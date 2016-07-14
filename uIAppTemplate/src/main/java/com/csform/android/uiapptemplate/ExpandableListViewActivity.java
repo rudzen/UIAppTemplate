@@ -1,14 +1,11 @@
 package com.csform.android.uiapptemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -22,6 +19,9 @@ import android.widget.TextView;
 import com.csform.android.uiapptemplate.view.AnimatedExpandableListView;
 import com.csform.android.uiapptemplate.view.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * This is an example usage of the AnimatedExpandableListView class.
  * 
@@ -29,7 +29,7 @@ import com.csform.android.uiapptemplate.view.AnimatedExpandableListView.Animated
  * where each group has from 1 to 100 children (so the first group will have one
  * child, the second will have two children and so on...).
  */
-public class ExpandableListViewActivity extends ActionBarActivity {
+public class ExpandableListViewActivity extends AppCompatActivity {
 
 	private AnimatedExpandableListView listView;
 	private ExampleAdapter adapter;
@@ -40,7 +40,7 @@ public class ExpandableListViewActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_expandable_list_view);
 
-		List<GroupItem> items = new ArrayList<GroupItem>();
+		List<GroupItem> items = new ArrayList<>();
 
 		// Populate our list with groups and it's children
 		for (int i = 1; i < 100; i++) {
@@ -114,7 +114,7 @@ public class ExpandableListViewActivity extends ActionBarActivity {
 
 	private static class GroupItem {
 		String title;
-		List<ChildItem> items = new ArrayList<ChildItem>();
+		List<ChildItem> items = new ArrayList<>();
 	}
 
 	private static class ChildItem {
@@ -135,7 +135,7 @@ public class ExpandableListViewActivity extends ActionBarActivity {
 	 * Adapter for our list of {@link GroupItem}s.
 	 */
 	private class ExampleAdapter extends AnimatedExpandableListAdapter {
-		private LayoutInflater inflater;
+		private final LayoutInflater inflater;
 
 		private List<GroupItem> items;
 

@@ -21,30 +21,30 @@ import android.view.animation.Interpolator;
 public class Transition {
 
     /** The rect the transition will start from. */
-    private RectF mSrcRect;
+    private final RectF mSrcRect;
 
     /** The rect the transition will end at. */
-    private RectF mDstRect;
+    private final RectF mDstRect;
 
     /** An intermediary rect that changes in every frame according to the transition progress. */
     private final RectF mCurrentRect = new RectF();
 
     /** Precomputed width difference between {@link #mSrcRect} and {@link #mSrcRect}. */
-    private float mWidthDiff;
+    private final float mWidthDiff;
     /** Precomputed height difference between {@link #mSrcRect} and {@link #mSrcRect}. */
-    private float mHeightDiff;
+    private final float mHeightDiff;
     /** Precomputed X offset between the center points of
      *  {@link #mSrcRect} and {@link #mSrcRect}. */
-    private float mCenterXDiff;
+    private final float mCenterXDiff;
     /** Precomputed Y offset between the center points of
      *  {@link #mSrcRect} and {@link #mSrcRect}. */
-    private float mCenterYDiff;
+    private final float mCenterYDiff;
 
     /** The duration of the transition in milliseconds. The default duration is 5000 ms. */
-    private long mDuration;
+    private final long mDuration;
 
     /** The {@link Interpolator} used to perform the transitions between rects. */
-    private Interpolator mInterpolator;
+    private final Interpolator mInterpolator;
 
 
     public Transition(RectF srcRect, RectF dstRect, long duration, Interpolator interpolator) {
@@ -91,14 +91,14 @@ public class Transition {
         float elapsedTimeFraction = elapsedTime / (float) mDuration;
         float interpolationProgress = Math.min(elapsedTimeFraction, 1);
         float interpolation = mInterpolator.getInterpolation(interpolationProgress);
-        float currentWidth = mSrcRect.width() + (interpolation * mWidthDiff);
-        float currentHeight = mSrcRect.height() + (interpolation * mHeightDiff);
+        float currentWidth = mSrcRect.width() + interpolation * mWidthDiff;
+        float currentHeight = mSrcRect.height() + interpolation * mHeightDiff;
 
-        float currentCenterX = mSrcRect.centerX() + (interpolation * mCenterXDiff);
-        float currentCenterY = mSrcRect.centerY() + (interpolation * mCenterYDiff);
+        float currentCenterX = mSrcRect.centerX() + interpolation * mCenterXDiff;
+        float currentCenterY = mSrcRect.centerY() + interpolation * mCenterYDiff;
 
-        float left = currentCenterX - (currentWidth / 2);
-        float top = currentCenterY - (currentHeight / 2);
+        float left = currentCenterX - currentWidth / 2;
+        float top = currentCenterY - currentHeight / 2;
         float right = left + currentWidth;
         float bottom = top + currentHeight;
 

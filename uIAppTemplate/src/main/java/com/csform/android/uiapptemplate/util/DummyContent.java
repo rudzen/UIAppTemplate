@@ -1,12 +1,12 @@
 package com.csform.android.uiapptemplate.util;
 
-import java.util.ArrayList;
-import java.util.Random;
-
 import com.csform.android.uiapptemplate.R;
 import com.csform.android.uiapptemplate.model.DummyModel;
 import com.csform.android.uiapptemplate.model.ImageGalleryCategoryModel;
 import com.csform.android.uiapptemplate.model.ImageGallerySubcategoryModel;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class DummyContent {
 	
@@ -19,7 +19,7 @@ public class DummyContent {
 	 * ImageGalleryActivity.
 	 */
 	public static ArrayList<ImageGalleryCategoryModel> getImageGalleryAnimalCategories() {
-		ArrayList<ImageGalleryCategoryModel> imageGalleryCategoryModels = new ArrayList<ImageGalleryCategoryModel>();
+		ArrayList<ImageGalleryCategoryModel> imageGalleryCategoryModels = new ArrayList<>();
 
 		ImageGalleryCategoryModel imageGalleryCategoryModel = new ImageGalleryCategoryModel();
 		imageGalleryCategoryModel.setId(0L);
@@ -91,7 +91,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryDogsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -145,7 +145,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryHorsesSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -191,7 +191,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryCatsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -242,7 +242,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryKangarooSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -296,7 +296,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryFoxesSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -347,7 +347,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryEaglesSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -393,7 +393,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGallerySquirrelsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -442,7 +442,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryBearsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -488,7 +488,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGalleryCategoryModel> getImageGalleryMusicCategories() {
-		ArrayList<ImageGalleryCategoryModel> imageGalleryCategoryModels = new ArrayList<ImageGalleryCategoryModel>();
+		ArrayList<ImageGalleryCategoryModel> imageGalleryCategoryModels = new ArrayList<>();
 
 		ImageGalleryCategoryModel imageGalleryCategoryModel = new ImageGalleryCategoryModel();
 		imageGalleryCategoryModel.setId(0L);
@@ -542,7 +542,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryViolinsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -584,7 +584,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryDrumsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -623,7 +623,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGallerySaxophonesSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -659,7 +659,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryTrumpetsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -707,7 +707,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryPianosSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);
@@ -746,7 +746,7 @@ public class DummyContent {
 	}
 
 	public static ArrayList<ImageGallerySubcategoryModel> getImageGalleryAccordionsSubcategory() {
-		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<ImageGallerySubcategoryModel>();
+		ArrayList<ImageGallerySubcategoryModel> imageGallerySubcategoryModels = new ArrayList<>();
 		
 		ImageGallerySubcategoryModel imageGallerySubcategoryModel = new ImageGallerySubcategoryModel();
 		imageGallerySubcategoryModel.setId(0L);

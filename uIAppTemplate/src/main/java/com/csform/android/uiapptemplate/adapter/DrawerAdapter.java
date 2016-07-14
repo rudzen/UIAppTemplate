@@ -1,7 +1,5 @@
 package com.csform.android.uiapptemplate.adapter;
 
-import java.util.List;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +10,12 @@ import android.widget.TextView;
 import com.csform.android.uiapptemplate.R;
 import com.csform.android.uiapptemplate.model.DrawerItem;
 
+import java.util.List;
+
 public class DrawerAdapter extends BaseAdapter {
-	
-	private List<DrawerItem> mDrawerItems;
-	private LayoutInflater mInflater;
+
+	private final List<DrawerItem> mDrawerItems;
+	private final LayoutInflater mInflater;
 	private final boolean mIsFirstType; //Choose between two types of list items
 	
 	public DrawerAdapter(Context context, List<DrawerItem> items, boolean isFirstType) {

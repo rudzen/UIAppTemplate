@@ -1,9 +1,5 @@
 package com.csform.android.uiapptemplate.view.cpb;
 
-import com.csform.android.uiapptemplate.R;
-import com.csform.android.uiapptemplate.font.RobotoTextView;
-import com.csform.android.uiapptemplate.font.RobotoTextView.Roboto;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -18,6 +14,10 @@ import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.util.StateSet;
 import android.widget.Button;
+
+import com.csform.android.uiapptemplate.R;
+import com.csform.android.uiapptemplate.font.RobotoTextView;
+import com.csform.android.uiapptemplate.font.RobotoTextView.Roboto;
 
 public class CircularProgressButton extends Button {
 
@@ -265,7 +265,7 @@ public class CircularProgressButton extends Button {
             int left = offset + mPaddingProgress;
             mProgressDrawable.setBounds(left, mPaddingProgress, left, mPaddingProgress);
         }
-        float sweepAngle = (360f / mMaxProgress) * mProgress;
+        float sweepAngle = 360f / mMaxProgress * mProgress;
         mProgressDrawable.setSweepAngle(sweepAngle);
         mProgressDrawable.draw(canvas);
     }
@@ -344,7 +344,7 @@ public class CircularProgressButton extends Button {
         animation.start();
     }
 
-    private OnAnimationEndListener mProgressStateListener = new OnAnimationEndListener() {
+    private final OnAnimationEndListener mProgressStateListener = new OnAnimationEndListener() {
         @Override
         public void onAnimationEnd() {
             mMorphingInProgress = false;
@@ -384,7 +384,7 @@ public class CircularProgressButton extends Button {
 
     }
 
-    private OnAnimationEndListener mCompleteStateListener = new OnAnimationEndListener() {
+    private final OnAnimationEndListener mCompleteStateListener = new OnAnimationEndListener() {
         @Override
         public void onAnimationEnd() {
             if (mIconComplete != 0) {
@@ -430,7 +430,7 @@ public class CircularProgressButton extends Button {
 
     }
 
-    private OnAnimationEndListener mIdleStateListener = new OnAnimationEndListener() {
+    private final OnAnimationEndListener mIdleStateListener = new OnAnimationEndListener() {
         @Override
         public void onAnimationEnd() {
             removeIcon();
@@ -470,7 +470,7 @@ public class CircularProgressButton extends Button {
         animation.start();
     }
 
-    private OnAnimationEndListener mErrorStateListener = new OnAnimationEndListener() {
+    private final OnAnimationEndListener mErrorStateListener = new OnAnimationEndListener() {
         @Override
         public void onAnimationEnd() {
             if (mIconError != 0) {
@@ -512,7 +512,7 @@ public class CircularProgressButton extends Button {
     private void setIcon(int icon) {
         Drawable drawable = getResources().getDrawable(icon);
         if (drawable != null) {
-            int padding = (getWidth() / 2) - (drawable.getIntrinsicWidth() / 2);
+            int padding = getWidth() / 2 - drawable.getIntrinsicWidth() / 2;
             setCompoundDrawablesWithIntrinsicBounds(icon, 0, 0, 0);
             setPadding(padding, 0, 0, 0);
         }

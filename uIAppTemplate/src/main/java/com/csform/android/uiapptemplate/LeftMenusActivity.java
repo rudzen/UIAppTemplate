@@ -1,14 +1,11 @@
 package com.csform.android.uiapptemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,7 +22,10 @@ import com.csform.android.uiapptemplate.adapter.DrawerAdapter;
 import com.csform.android.uiapptemplate.model.DrawerItem;
 import com.csform.android.uiapptemplate.util.ImageUtil;
 
-public class LeftMenusActivity extends ActionBarActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class LeftMenusActivity extends AppCompatActivity {
 
 	public static final String LEFT_MENU_OPTION = "com.csform.android.uiapptemplate.LeftMenusActivity";
 	public static final String LEFT_MENU_OPTION_1 = "Left Menu Option 1";
@@ -70,7 +70,8 @@ public class LeftMenusActivity extends ActionBarActivity {
 				invalidateOptionsMenu();
 			}
 		};
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
+		mDrawerLayout.addDrawerListener(mDrawerToggle);
+		//mDrawerLayout.setDrawerListener(mDrawerToggle);
 		
 		if (savedInstanceState == null) {
 			mDrawerLayout.openDrawer(mDrawerList);
@@ -153,10 +154,7 @@ public class LeftMenusActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+		return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
 	}
 
 	private class DrawerItemClickListener implements

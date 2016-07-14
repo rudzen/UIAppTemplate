@@ -49,11 +49,11 @@ public class ProgressWheel extends View {
 	private int textColor = 0xFF000000;
 
 	// Paints
-	private Paint barPaint = new Paint();
-	private Paint circlePaint = new Paint();
-	private Paint rimPaint = new Paint();
-	private Paint textPaint = new Paint();
-	private Paint contourPaint = new Paint();
+	private final Paint barPaint = new Paint();
+	private final Paint circlePaint = new Paint();
+	private final Paint rimPaint = new Paint();
+	private final Paint textPaint = new Paint();
+	private final Paint contourPaint = new Paint();
 
 	// Rectangles
 	@SuppressWarnings("unused")
@@ -105,16 +105,16 @@ public class ProgressWheel extends View {
 		// convenient way to get most of this complexity handled.
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-		// We can’t use getWidth() or getHight() here. During the measuring
+		// We can't use getWidth() or getHight() here. During the measuring
 		// pass the view has not gotten its final size yet (this happens first
 		// at the start of the layout pass) so we have to use getMeasuredWidth()
 		// and getMeasuredHeight().
 		int size = 0;
 		int width = getMeasuredWidth();
 		int height = getMeasuredHeight();
-		int widthWithoutPadding = width - getPaddingLeft() - getPaddingRight();
-		int heigthWithoutPadding = height - getPaddingTop()
-				- getPaddingBottom();
+		int widthWithoutPadding = width - paddingLeft - paddingRight;
+		int heigthWithoutPadding = height - paddingTop
+				- paddingBottom;
 
 		// Finally we have some simple logic that calculates the size of the
 		// view
@@ -133,16 +133,16 @@ public class ProgressWheel extends View {
 		}
 
 		// If you override onMeasure() you have to call setMeasuredDimension().
-		// This is how you report back the measured size. If you don’t call
+		// This is how you report back the measured size. If you donï¿½t call
 		// setMeasuredDimension() the parent will throw an exception and your
 		// application will crash.
-		// We are calling the onMeasure() method of the superclass so we don’t
+		// We are calling the onMeasure() method of the superclass so we donï¿½t
 		// actually need to call setMeasuredDimension() since that takes care
 		// of that. However, the purpose with overriding onMeasure() was to
 		// change the default behaviour and to do that we need to call
 		// setMeasuredDimension() with our own values.
-		setMeasuredDimension(size + getPaddingLeft() + getPaddingRight(), size
-				+ getPaddingTop() + getPaddingBottom());
+		setMeasuredDimension(size + paddingLeft + paddingRight, size
+				+ paddingTop + paddingBottom);
 	}
 
 	/**
@@ -209,10 +209,10 @@ public class ProgressWheel extends View {
 		int yOffset = layout_height - minValue;
 
 		// Add the offset
-		paddingTop = this.getPaddingTop() + (yOffset / 2);
-		paddingBottom = this.getPaddingBottom() + (yOffset / 2);
-		paddingLeft = this.getPaddingLeft() + (xOffset / 2);
-		paddingRight = this.getPaddingRight() + (xOffset / 2);
+		paddingTop = paddingTop + (yOffset / 2);
+		paddingBottom = paddingBottom + (yOffset / 2);
+		paddingLeft = paddingLeft + (xOffset / 2);
+		paddingRight = paddingRight + (xOffset / 2);
 
 		int width = getWidth(); // this.getLayoutParams().width;
 		int height = getHeight(); // this.getLayoutParams().height;
@@ -268,7 +268,7 @@ public class ProgressWheel extends View {
 		textSize = (int) a.getDimension(R.styleable.ProgressWheel_textSize,
 				textSize);
 
-		textColor = (int) a.getColor(R.styleable.ProgressWheel_textColor,
+		textColor = a.getColor(R.styleable.ProgressWheel_textColor,
 				textColor);
 
 		// if the text is empty , so ignore it
@@ -276,10 +276,10 @@ public class ProgressWheel extends View {
 			setText(a.getString(R.styleable.ProgressWheel_text));
 		}
 
-		rimColor = (int) a.getColor(R.styleable.ProgressWheel_rimColor,
+		rimColor = a.getColor(R.styleable.ProgressWheel_rimColor,
 				rimColor);
 
-		circleColor = (int) a.getColor(R.styleable.ProgressWheel_circleColor,
+		circleColor = a.getColor(R.styleable.ProgressWheel_circleColor,
 				circleColor);
 
 		contourColor = a.getColor(R.styleable.ProgressWheel_contourColor,

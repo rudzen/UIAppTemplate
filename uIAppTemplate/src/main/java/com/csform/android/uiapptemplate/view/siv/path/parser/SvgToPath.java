@@ -1,5 +1,14 @@
 package com.csform.android.uiapptemplate.view.siv.path.parser;
 
+import android.graphics.Matrix;
+import android.graphics.Path;
+import android.graphics.RectF;
+import android.util.Log;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -7,15 +16,6 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.LinkedList;
-
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
-
-import android.graphics.Matrix;
-import android.graphics.Path;
-import android.graphics.RectF;
-import android.util.Log;
 
 //https://github.com/geosolutions-it/mapsforge/tree/master/svg-android
 /*
@@ -48,7 +48,7 @@ public class SvgToPath {
         try {
             XmlPullParser xr = XmlPullParserFactory.newInstance().newPullParser();
             SvgToPath svgHandler = new SvgToPath(xr);
-            svgHandler.setDpi(dpi);
+            svgHandler.dpi = dpi;
 
             if (ignoreDefs) {
                 xr.setInput(new InputStreamReader(in));
@@ -75,7 +75,7 @@ public class SvgToPath {
 
     private final static Matrix IDENTITY_MATRIX = new Matrix();
 
-    private HashMap<String, String> idXml = new HashMap<String, String>();
+    private HashMap<String, String> idXml = new HashMap<>();
     private final XmlPullParser atts;
     private final RectF rect = new RectF();
     private float dpi = DPI;
@@ -83,8 +83,8 @@ public class SvgToPath {
     private int hiddenLevel = 0;
     private boolean inDefsElement = false;
 
-    private final Deque<Path> pathStack = new LinkedList<Path>();
-    private final Deque<Matrix> matrixStack = new LinkedList<Matrix>();
+    private final Deque<Path> pathStack = new LinkedList<>();
+    private final Deque<Matrix> matrixStack = new LinkedList<>();
 
     private float width;
     private float height;
@@ -126,7 +126,7 @@ public class SvgToPath {
     }
 
     private void pushTransform(Matrix pMatrix) {
-        final Matrix matrix = (pMatrix == null) ? IDENTITY_MATRIX : pMatrix;
+        final Matrix matrix = pMatrix == null ? IDENTITY_MATRIX : pMatrix;
         matrixStack.push(matrix);
     }
 
@@ -164,8 +164,8 @@ public class SvgToPath {
 
             if (viewbox != null && viewbox.numbers != null && viewbox.numbers.size() == 4) {
                 if(width < 0.1f || height < -0.1f){
-                    width = (viewbox.numbers.get(2) - viewbox.numbers.get(0));
-                    width = (viewbox.numbers.get(3) - viewbox.numbers.get(3));
+                    width = viewbox.numbers.get(2) - viewbox.numbers.get(0);
+                    width = viewbox.numbers.get(3) - viewbox.numbers.get(3);
                 } else {
                     float sx = width / (viewbox.numbers.get(2) - viewbox.numbers.get(0)) ;
                     float sy = height / (viewbox.numbers.get(3) - viewbox.numbers.get(1));
@@ -196,11 +196,11 @@ public class SvgToPath {
                 if (attX != null || attY != null) {
                     sb.append("translate(");
                     sb.append(attX != null ? ParseUtil.escape(attX) : "0");
-                    sb.append(",");
+                    sb.append(',');
                     sb.append(attY != null ? ParseUtil.escape(attY) : "0");
-                    sb.append(")");
+                    sb.append(')');
                 }
-                sb.append("'");
+                sb.append('\'');
             }
 
             for (int i = 0; i < atts.getAttributeCount(); i++) {
@@ -209,15 +209,15 @@ public class SvgToPath {
                         !"width".equals(attrQName) && !"height".equals(attrQName) &&
                         !"xlink:href".equals(attrQName) && !"transform".equals(attrQName)) {
 
-                    sb.append(" ");
+                    sb.append(' ');
                     sb.append(attrQName);
                     sb.append("='");
                     sb.append(ParseUtil.escape(atts.getAttributeValue(i)));
-                    sb.append("'");
+                    sb.append('\'');
                 }
             }
 
-            sb.append(">");
+            sb.append('>');
 
             sb.append(idXml.get(href.substring(1)));
 
@@ -329,11 +329,16 @@ public class SvgToPath {
     }
 
     private String showAttributes(XmlPullParser a) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for(int i=0; i < a.getAttributeCount(); i++) {
-            result += " " + a.getAttributeName(i) + "='" + a.getAttributeValue(i) + "'";
+            result.append(' ');
+            result.append(a.getAttributeName(i));
+            result.append("='");
+            result.append(a.getAttributeValue(i));
+            result.append('\'');
         }
-        return result;
+        result.trimToSize();
+        return result.toString();
     }
 
     void endElement() {
