@@ -21,7 +21,7 @@ class IdHandler {
         this.atts = atts;
     }
 
-    class IdRecording {
+    static class IdRecording {
         final String id;
         int level;
         final StringBuilder sb;

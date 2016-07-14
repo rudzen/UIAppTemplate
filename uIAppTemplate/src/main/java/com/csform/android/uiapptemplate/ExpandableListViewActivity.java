@@ -133,7 +133,7 @@ public class ExpandableListViewActivity extends AppCompatActivity {
     /**
      * Adapter for our list of {@link GroupItem}s.
      */
-    private class ExampleAdapter extends AnimatedExpandableListAdapter {
+    private static class ExampleAdapter extends AnimatedExpandableListAdapter {
         private final LayoutInflater inflater;
 
         private List<GroupItem> items;

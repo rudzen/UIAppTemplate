@@ -75,7 +75,7 @@ public class ProgressBarsFragment extends Fragment implements OnClickListener {
         }
     }
 
-    private class FalseProgress extends AsyncTask<Integer, Integer, Integer> {
+    private static class FalseProgress extends AsyncTask<Integer, Integer, Integer> {
 
         private final CircularProgressButton cpb;
 

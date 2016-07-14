@@ -305,8 +305,7 @@ public class ProgressWheel extends View {
 		canvas.drawArc(circleInnerContour, 360, 360, false, contourPaint);
 		// Draw the bar
 		if (isSpinning) {
-			canvas.drawArc(circleBounds, progress - 90, barLength, false,
-					barPaint);
+			canvas.drawArc(circleBounds, progress - 90, barLength, false, barPaint);
 		} else {
 			canvas.drawArc(circleBounds, -90, progress, false, barPaint);
 		}

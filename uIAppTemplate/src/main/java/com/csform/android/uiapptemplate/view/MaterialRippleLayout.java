@@ -449,18 +449,7 @@ public class MaterialRippleLayout extends FrameLayout {
     /*
      * Animations
      */
-    private final Property<MaterialRippleLayout, Float> radiusProperty
-        = new Property<MaterialRippleLayout, Float>(Float.class, "radius") {
-        @Override
-        public Float get(MaterialRippleLayout object) {
-            return object.getRadius();
-        }
-
-        @Override
-        public void set(MaterialRippleLayout object, Float value) {
-            object.setRadius(value);
-        }
-    };
+    private final Property<MaterialRippleLayout, Float> radiusProperty = new MaterialRippleLayoutFloatPropertyRadius();
 
     private float getRadius() {
         return radius;
@@ -472,18 +461,7 @@ public class MaterialRippleLayout extends FrameLayout {
         invalidate();
     }
 
-    private final Property<MaterialRippleLayout, Integer> circleAlphaProperty
-        = new Property<MaterialRippleLayout, Integer>(Integer.class, "rippleAlpha") {
-        @Override
-        public Integer get(MaterialRippleLayout object) {
-            return object.getRippleAlpha();
-        }
-
-        @Override
-        public void set(MaterialRippleLayout object, Integer value) {
-            object.setRippleAlpha(value);
-        }
-    };
+    private final Property<MaterialRippleLayout, Integer> circleAlphaProperty = new MaterialRippleLayoutIntegerPropertyAlpha();
 
     public int getRippleAlpha() {
         return paint.getAlpha();
@@ -546,6 +524,34 @@ public class MaterialRippleLayout extends FrameLayout {
         this.rippleAlpha = alpha;
         paint.setAlpha(alpha);
         invalidate();
+    }
+
+    private static class MaterialRippleLayoutFloatPropertyRadius extends Property<MaterialRippleLayout, Float> {
+        public MaterialRippleLayoutFloatPropertyRadius() {super(Float.class, "radius");}
+
+        @Override
+        public Float get(MaterialRippleLayout object) {
+            return object.getRadius();
+        }
+
+        @Override
+        public void set(MaterialRippleLayout object, Float value) {
+            object.setRadius(value);
+        }
+    }
+
+    private static class MaterialRippleLayoutIntegerPropertyAlpha extends Property<MaterialRippleLayout, Integer> {
+        public MaterialRippleLayoutIntegerPropertyAlpha() {super(Integer.class, "rippleAlpha");}
+
+        @Override
+        public Integer get(MaterialRippleLayout object) {
+            return object.getRippleAlpha();
+        }
+
+        @Override
+        public void set(MaterialRippleLayout object, Integer value) {
+            object.setRippleAlpha(value);
+        }
     }
 
     /*
