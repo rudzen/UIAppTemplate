@@ -109,7 +109,7 @@ public class ProgressWheel extends View {
 		// pass the view has not gotten its final size yet (this happens first
 		// at the start of the layout pass) so we have to use getMeasuredWidth()
 		// and getMeasuredHeight().
-		int size = 0;
+		int size;
 		int width = getMeasuredWidth();
 		int height = getMeasuredHeight();
 		int widthWithoutPadding = width - paddingLeft - paddingRight;
