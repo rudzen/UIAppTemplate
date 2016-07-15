@@ -93,12 +93,16 @@ public class MainActivity extends AppCompatActivity {
                 R.string.drawer_open,
                 R.string.drawer_close) {
             public void onDrawerClosed(View view) {
-                getSupportActionBar().setTitle(mTitle);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(mTitle);
+                }
                 invalidateOptionsMenu();
             }
 
             public void onDrawerOpened(View drawerView) {
-                getSupportActionBar().setTitle(mDrawerTitle);
+                if (getSupportActionBar() != null) {
+                    getSupportActionBar().setTitle(mDrawerTitle);
+                }
                 invalidateOptionsMenu();
             }
         };

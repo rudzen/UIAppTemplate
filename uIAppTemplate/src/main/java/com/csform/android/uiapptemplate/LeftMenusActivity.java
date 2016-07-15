@@ -54,7 +54,6 @@ public class LeftMenusActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         prepareNavigationDrawerItems();
         setAdapter();
-        //mDrawerList.setAdapter(new DrawerAdapter(this, mDrawerItems));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
@@ -69,7 +68,6 @@ public class LeftMenusActivity extends AppCompatActivity {
             }
         };
         mDrawerLayout.addDrawerListener(mDrawerToggle);
-        //mDrawerLayout.setDrawerListener(mDrawerToggle);
 
         if (savedInstanceState == null) {
             mDrawerLayout.openDrawer(mDrawerList);

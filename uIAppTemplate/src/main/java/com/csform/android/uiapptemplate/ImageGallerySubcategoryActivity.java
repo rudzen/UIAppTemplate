@@ -27,7 +27,9 @@ public class ImageGallerySubcategoryActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.list_view);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {

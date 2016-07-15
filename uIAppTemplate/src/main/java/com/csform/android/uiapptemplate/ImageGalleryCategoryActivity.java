@@ -27,7 +27,9 @@ public class ImageGalleryCategoryActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.list_view);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         String subcategory = ANIMALS_CATEGORY;
         Bundle extras = getIntent().getExtras();

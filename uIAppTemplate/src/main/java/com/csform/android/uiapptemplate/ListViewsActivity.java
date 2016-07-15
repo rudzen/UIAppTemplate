@@ -54,7 +54,9 @@ public class ListViewsActivity extends AppCompatActivity {
 
         setUpListView(category);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override

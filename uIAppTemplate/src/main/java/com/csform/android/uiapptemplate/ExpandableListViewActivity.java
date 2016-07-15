@@ -59,7 +59,9 @@ public class ExpandableListViewActivity extends AppCompatActivity {
             items.add(item);
         }
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
 
         adapter = new ExampleAdapter(this);
         adapter.setData(items);

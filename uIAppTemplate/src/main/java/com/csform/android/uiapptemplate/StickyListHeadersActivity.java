@@ -45,7 +45,9 @@ public class StickyListHeadersActivity extends AppCompatActivity {
         stickyListHeadersAdapterDecorator.getViewAnimator().setInitialDelayMillis(500);
         listView.setAdapter(stickyListHeadersAdapterDecorator);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     @Override
