@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
         mTitle = mDrawerTitle = getTitle();
         mDrawerList = (ListView) findViewById(R.id.list_view);
 
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
         prepareNavigationDrawerItems();
         mDrawerList.setAdapter(new DrawerAdapter(this, mDrawerItems, true));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
 
         mHandler = new Handler();
 
